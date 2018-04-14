@@ -1,0 +1,77 @@
+.tableTitle {
+	margin-left: 20px;
+	position: relative;
+	top: 30px;
+}
+
+th {
+	background-color: #d9edf7;
+}
+
+.loading {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.4;
+	z-index: 1000;
+}
+
+.hiding {
+	display: none;
+}
+
+.loading .gif {
+	height: 52px;
+	width: 52px;
+	background: url('../img/loading1.gif');
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -26px;
+	margin-top: -26px;
+	z-index: 1001;
+}
+
+.inputLength {
+	width: 200px !important;
+}
+
+div.container div.row div {
+	margin: 5px 0px;
+}
+
+.head {
+	font-weight: 600;
+	font-size: large;
+}
+
+.text-margin {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.right-button {
+	float: right;
+	margin-right: 10px;
+}
+
+.boxed-group {
+	margin: 20px 20px;
+	background-color: #fff;
+}
+
+.note {
+	font-size: 12px;
+	color: #777;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.big-spacer-left {
+	margin-left: 16px;
+}
