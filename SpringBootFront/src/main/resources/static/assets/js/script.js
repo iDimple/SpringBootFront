@@ -7,8 +7,8 @@ $(document).ready(function () {
 			async:true,
 			success:function(result){
 				$("#projectName").val(result.projectName);
-				$('#langSelec').selectpicker('val',project.language);
-				$('#encodeSelec').selectpicker('val',project.sourceEncoding);
+				$('#langSelec').selectpicker('val',result.language);
+				$('#encodeSelec').selectpicker('val',result.sourceEncoding);
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				console.log(textStatus);
