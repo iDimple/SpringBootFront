@@ -1,4 +1,63 @@
 $(document).ready(function () {
+	function initProblemCons(){
+		var myChart = echarts.init(document
+				.getElementById('chart-area'));
+		option = {
+				tooltip: {
+					trigger: 'item',
+					formatter: "{a} <br/>{b}: {c} ({d}%)"
+				},
+				legend: {
+					orient: 'vertical',
+					x: 'right',
+					data:['Bugs','Code Smells','Vulnerabilites']
+				},
+				series: [
+					{
+						name:'问题构成',
+						type:'pie',
+						radius: ['50%', '70%'],
+						avoidLabelOverlap: false,
+						label: {
+
+							emphasis: {
+								show: true,
+								textStyle: {
+									fontSize: '30',
+									fontWeight: 'bold'
+								}
+							}
+						},
+						data:[
+							{value:335, name:'Bugs'},
+							{value:310, name:'Code Smells'},
+							{value:234, name:'Vulnerabilites'}
+							]
+					}
+					]
+		};
+		myChart.setOption(option);
+		var bugChart = echarts.init(document
+				.getElementById('chart-bug'));
+		bugoption = {
+				title: {
+					text: '近期检查Bugs趋势图'
+				},
+				xAxis: {
+					type: 'category',
+					data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [{
+					data: [820, 932, 901, 934, 1290, 1330, 1320],
+					type: 'line'
+				}]
+		};
+		bugChart.setOption(bugoption);
+	}
+	initProblemCons();
 	function fillData(){
 		//填充参数
 		$.ajax({

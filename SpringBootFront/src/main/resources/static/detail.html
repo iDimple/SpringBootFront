@@ -9,8 +9,10 @@
 <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap.min.css">
+<script type="text/javascript" src="assets/js/echarts.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap-table.min.css">
 <script type="text/javascript"
@@ -24,7 +26,51 @@
 		<li><a href="#source" data-toggle="tab">源码问题</a></li>
 	</ul>
 	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane fade in active" id="general">总的问题以及一些图</div>
+		<div class="tab-pane fade in active" id="general">
+			总的问题以及一些图
+			<div class="panel panel-info panel-area">
+				<div class="panel-heading head">数据概览</div>
+				<div class="panel-body">
+					<span class="text-muted">该项目共有</span><span class="highlightText">7</span>
+					<span class="text-muted">个类(Class)，</span> <span
+						class="highlightText">7</span> <span class="text-muted">个方法(Function),</span>
+					<span class="highlightText">7</span> <span class="text-muted">行代码(LOC)，</span><span
+						class="highlightText">7</span> <span class="text-muted">行注释)，注释比</span>
+					<span class="highlightText">7%</span> <span class="text-muted">少于国际标准。</span><br />
+					<span class="text-muted">问题构成如下图：</span>
+					<div>
+						<div class="panel-info">
+
+							<div class="panel-body">
+								<div class="chart-div" id="chart-area"
+									style="width: 700px; height: 430px;"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-info panel-area">
+				<div class="panel-heading head">可靠性－－Bugs</div>
+				<div class="panel-body">
+					<div class="text-muted">Bugs track code that is demonstrably
+						wrong or highly likely to yield unexpected behavior.</div>
+						<div class="chart-div" id="chart-bug"
+									style="width: 700px; height: 430px;"></div>
+				</div>
+			</div>
+			<div class="panel panel-info panel-area">
+				<div class="panel-heading head">安全性－－Code Smells</div>
+				<div class="panel-body"><div class="text-muted">Vulnerabilities are raised on code
+					that is potentially vulnerable to exploitation by hackers.</div></div>
+			</div>
+			<div class="panel panel-info panel-area">
+				<div class="panel-heading head">可维护性－－Vulnerabilitis</div>
+				<div class="panel-body"><div class="text-muted">Code Smells will confuse maintainers
+					or give them pause. They are measured primarily in terms of the
+					time they will take to fix.</div></div>
+			</div>
+		</div>
 		<div class="tab-pane fade" id="source">
 			<div class="text-muted head tableTitle">VULNERABILITY详情</div>
 			<div style="margin: 0 20px">
@@ -33,8 +79,9 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade text-center" id="detailProblem" tabindex="-1" role="dialog"
-		aria-labelledby="detailProblemLabel" data-backdrop="static" >
+	<div class="modal fade text-center" id="detailProblem" tabindex="-1"
+		role="dialog" aria-labelledby="detailProblemLabel"
+		data-backdrop="static">
 		<div class="modal-dialog" style="display: inline-block; width: auto;">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -44,7 +91,7 @@
 					<h4 class="modal-title" id="detailProblemLabel">问题详情</h4>
 				</div>
 				<div class="modal-body">
-				<div id="codeArea" class="code text-left"></div>
+					<div id="codeArea" class="code text-left"></div>
 				</div>
 				<!-- /.modal-content -->
 			</div>
