@@ -17,7 +17,7 @@
 	href="assets/css/bootstrap-table.min.css">
 <script type="text/javascript"
 	src="assets/js/bootstrap-table-zh-CN.min.js"></script>
-<script type="text/javascript" src="assets/js/script.js"></script>
+<script type="text/javascript" src="assets/js/detail.js"></script>
 </head>
 <body>
 	<ul id="myTab" class="nav nav-tabs">
@@ -27,16 +27,15 @@
 	</ul>
 	<div id="myTabContent" class="tab-content">
 		<div class="tab-pane fade in active" id="general">
-			总的问题以及一些图
 			<div class="panel panel-info panel-area">
 				<div class="panel-heading head">数据概览</div>
 				<div class="panel-body">
-					<span class="text-muted">该项目共有</span><span class="highlightText">7</span>
+					<span class="text-muted">该项目共有</span><span class="highlightText" id="classes">41</span>
 					<span class="text-muted">个类(Class)，</span> <span
-						class="highlightText">7</span> <span class="text-muted">个方法(Function),</span>
-					<span class="highlightText">7</span> <span class="text-muted">行代码(LOC)，</span><span
-						class="highlightText">7</span> <span class="text-muted">行注释)，注释比</span>
-					<span class="highlightText">7%</span> <span class="text-muted">少于国际标准。</span><br />
+						class="highlightText" id="functions">220</span> <span class="text-muted">个方法(Function),</span>
+					<span class="highlightText" id="loc">7</span> <span class="text-muted">行代码(LOC)，</span><span
+						class="highlightText" id="comment">1399</span><span class="text-muted">行注释，注释代码比</span>
+					<span class="highlightText" id="commentRate">6.4</span> <span class="text-muted">%。</span><br />
 					<span class="text-muted">问题构成如下图：</span>
 					<div>
 						<div class="panel-info">
@@ -62,13 +61,19 @@
 			<div class="panel panel-info panel-area">
 				<div class="panel-heading head">安全性－－Code Smells</div>
 				<div class="panel-body"><div class="text-muted">Vulnerabilities are raised on code
-					that is potentially vulnerable to exploitation by hackers.</div></div>
+					that is potentially vulnerable to exploitation by hackers.</div>
+					<div class="chart-div" id="chart-codeSmell"
+									style="width: 700px; height: 430px;"></div>
+					</div>
 			</div>
 			<div class="panel panel-info panel-area">
 				<div class="panel-heading head">可维护性－－Vulnerabilitis</div>
 				<div class="panel-body"><div class="text-muted">Code Smells will confuse maintainers
 					or give them pause. They are measured primarily in terms of the
-					time they will take to fix.</div></div>
+					time they will take to fix.</div>
+					<div class="chart-div" id="chart-vulnerabilities"
+									style="width: 700px; height: 430px;"></div>
+					</div>
 			</div>
 		</div>
 		<div class="tab-pane fade" id="source">

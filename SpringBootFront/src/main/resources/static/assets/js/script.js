@@ -1,63 +1,19 @@
 $(document).ready(function () {
-	function initProblemCons(){
-		var myChart = echarts.init(document
-				.getElementById('chart-area'));
-		option = {
-				tooltip: {
-					trigger: 'item',
-					formatter: "{a} <br/>{b}: {c} ({d}%)"
-				},
-				legend: {
-					orient: 'vertical',
-					x: 'right',
-					data:['Bugs','Code Smells','Vulnerabilites']
-				},
-				series: [
-					{
-						name:'问题构成',
-						type:'pie',
-						radius: ['50%', '70%'],
-						avoidLabelOverlap: false,
-						label: {
-
-							emphasis: {
-								show: true,
-								textStyle: {
-									fontSize: '30',
-									fontWeight: 'bold'
-								}
-							}
-						},
-						data:[
-							{value:335, name:'Bugs'},
-							{value:310, name:'Code Smells'},
-							{value:234, name:'Vulnerabilites'}
-							]
-					}
-					]
-		};
-		myChart.setOption(option);
-		var bugChart = echarts.init(document
-				.getElementById('chart-bug'));
-		bugoption = {
-				title: {
-					text: '近期检查Bugs趋势图'
-				},
-				xAxis: {
-					type: 'category',
-					data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-				},
-				yAxis: {
-					type: 'value'
-				},
-				series: [{
-					data: [820, 932, 901, 934, 1290, 1330, 1320],
-					type: 'line'
-				}]
-		};
-		bugChart.setOption(bugoption);
+	function fillIndex(){
+		$.ajax({
+			type:"GET",
+			url:"http://localhost:8088/staticCheck/config/"+"Student",
+			async:true,
+			success:function(result){
+				$("#projectName").val(result.projectName);
+				$('#langSelec').selectpicker('val',result.language);
+				$('#encodeSelec').selectpicker('val',result.sourceEncoding);
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				console.log(textStatus);
+			}
+		});
 	}
-	initProblemCons();
 	function fillData(){
 		//填充参数
 		$.ajax({
@@ -74,134 +30,8 @@ $(document).ready(function () {
 			}
 		});
 	}
+	fillIndex();
 	fillData();
-	//根据窗口调整表格高度
-	$(window).resize(function() {
-		$('#mytab').bootstrapTable('resetView', {
-			height: tableHeight()
-		})
-	})
-
-	function transfer(str){
-		str=str.replace(/\//g, "%2F");
-		str=str.replace(/\:/g, "%3A");
-		return str;
-	}
-
-	function transferBlank(str){
-		str=str.replace("/\ /g","%nbsp;");
-		return str;
-	}
-
-	function showRule(row,result){
-		//清空
-		$("#codeArea").empty();
-		console.log(result);
-		//哪一行有问题
-		var lineNo=row.lineNo;
-		var code=result.code;
-		//得到说明
-		$.ajax({
-			type:"GET",
-			//contentType : 'application/json',
-			url:"http://localhost:8088/staticCheck/rule/"+row.rule,
-			//data:	{"key":row.filePath},
-			success:function(result){
-				console.log(result);
-				for(var i=0;i<code.length-1;i++){
-					if(lineNo==(i+1)){//背景是红色,
-						$("#codeArea").append("<div class='problem-line'><span class='source-meta w-source-line-number'> "+(i+1)+"</span>"+code[i]+"</div><br />");
-						//且在该行下面加上一些说明
-						$("#codeArea").append("<div class='rule-area'>"+result.describ+"</div>");
-						continue;
-					}
-					$("#codeArea").append("<span class='source-meta source-line-number'> "+(i+1)+"</span>"+code[i]+"<br />");
-				}
-			},
-			error:function(err){}
-		});	
-	}
-
-	window.getEvents={
-
-			"click #checkButton":function(e,value,row,index){
-				console.log(row);
-				//获得代码显示
-				$.ajax({
-					type:"POST",
-					//contentType : 'application/json',
-					url:"http://localhost:8088/staticCheck/code",
-					data:	{"key":row.filePath},
-					success:function(result){
-						showRule(row,result);
-					},
-					error:function(err){}
-				});
-			}
-	};
-	$("#codeCheckTable").bootstrapTable({
-		method: 'get',
-		url:"http://localhost:8088/staticCheck/problem/Student/VULNERABILITY",//要请求数据的文件路径
-		//url:"http://localhost:8088/staticCheck/problem/Student/CODE_SMELL",
-		//url:"http://localhost:8088/staticCheck/problem/Student/BUG",
-		pageNumber: 1, //初始化加载第一页，默认第一页
-		pagination:true,//是否分页
-		sidePagination:'server',//指定服务器端分页
-		pageSize:5,//单页记录数
-		pageList:[5,10],//分页步进值
-		showRefresh:true,//刷新按钮
-		clickToSelect: true,//是否启用点击选中行
-		toolbarAlign:'right',//工具栏对齐方式
-		queryParams : function(params) {
-			return {
-				offset: params.offset+1,
-				pageSize: params.limit,
-			};
-		},
-		columns:[
-			{
-				title:'严重性',
-				field:'severity',
-				sortable:true
-			},
-			{
-				title:'所在文件',
-				field:'filePath',
-				sortable:true
-			},
-			{
-				title:'问题描述',
-				field:'message'
-			},
-			{
-				title:'问题类型',
-				field:'type',
-				sortable:true,
-				cellStyle:{  
-					css:{"background-color":"pink"}  
-				}  ,
-				visible:false
-			},
-			{
-				title:'所在行数',
-				field:'lineNo'
-			},
-			{
-				title:'操作',
-				field:'Button',
-				formatter:function(value,row,index){
-					return '<button id="checkButton" type="button" class="btn btn-info" data-toggle="modal" data-target="#detailProblem">点击查看</button> ';
-				},
-				events:getEvents
-			}
-			],
-			locale:'zh-CN',//中文支持,
-			responseHandler:function(res){
-				//在ajax获取到数据，渲染表格之前，修改数据源
-				return res;
-			}
-	})
-
 	getDetail=function (){
 		window.location.href="detail.html";
 	}
@@ -248,10 +78,7 @@ $(document).ready(function () {
 //	}
 //	});
 	//tableHeight函数
-	function tableHeight(){
-		//可以根据自己页面情况进行调整
-		return $(window).height() -280;
-	}
+
 
 });
 
