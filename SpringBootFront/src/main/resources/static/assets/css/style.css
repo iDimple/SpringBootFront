@@ -1,3 +1,43 @@
+/**
+* toaster
+*/
+.toaster {
+    position: fixed;
+    top: 15px;
+    right: 30px;
+    z-index: 9999;
+    width: 265px;
+}
+
+.toast-item {
+    width: 100%;
+    margin-bottom: 20px;
+    color: #fff;
+    padding: 15px 15px;
+    display: none;
+    position: relative;
+}
+
+.toast-item .message {
+    width: 230px;
+}
+
+.toast-item .close {
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    cursor: pointer;
+}
+
+.toast-item.error {
+    background-color: #d04b4a;
+}
+
+.toast-item.success {
+    background-color: #468ec6;
+}
+
+
 .tableTitle {
 	margin-left: 20px;
 	position: relative;

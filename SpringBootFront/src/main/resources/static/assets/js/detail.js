@@ -1,12 +1,40 @@
 $(document).ready(function(){
+	/**
+
+	*paramStr:name=name&type=type...
+
+	*keyList;[name,key,...]
+
+	*/
+
+	function getValue(paramStr,keyList){
+
+	    var valueList=[];
+
+	    paramStr=paramStr.split("&");
+
+	    for(var i=0;i<paramStr.length;i++){
+
+	        var value=paramStr[i];//name=name
+
+	        value=unescape(value.split("=")[1]);//name
+
+	        valueList.push(value);
+
+	    }
+
+	    return valueList;
+
+	}
+	var paramStr=window.location.href.split("?")[1];
+	var projectKey=getValue(paramStr,["projectKey"]);
 	function initBugs(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"bugs/"+"Student",
+			url:"http://localhost:8088/staticCheck/measure/"+"bugs/"+projectKey,
 			async:true,
 			success:function(result){
-				console.log(result);
 				var bugChart = echarts.init(document
 						.getElementById('chart-bug'));
 
@@ -46,10 +74,9 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"code_smells/"+"Student",
+			url:"http://localhost:8088/staticCheck/measure/"+"code_smells/"+projectKey,
 			async:true,
 			success:function(result){
-				console.log(result);
 				var bugChart = echarts.init(document
 						.getElementById('chart-codeSmell'));
 
@@ -89,10 +116,9 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"vulnerabilities/"+"Student",
+			url:"http://localhost:8088/staticCheck/measure/"+"vulnerabilities/"+projectKey,
 			async:true,
 			success:function(result){
-				console.log(result);
 				var bugChart = echarts.init(document
 						.getElementById('chart-vulnerabilities'));
 
@@ -170,10 +196,9 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"Student",
+			url:"http://localhost:8088/staticCheck/measure/"+projectKey,
 			async:true,
 			success:function(result){
-				console.log(result);
 				$("#classes").html(result.classes);
 				$("#functions").html(result.functions);
 				$("#loc").html(result.loc);
@@ -211,7 +236,6 @@ $(document).ready(function(){
 	function showRule(row,result){
 		//清空
 		$("#codeArea").empty();
-		console.log(result);
 		//哪一行有问题
 		var lineNo=row.lineNo;
 		var code=result.code;
@@ -222,7 +246,6 @@ $(document).ready(function(){
 			url:"http://localhost:8088/staticCheck/rule/"+row.rule,
 			//data:	{"key":row.filePath},
 			success:function(result){
-				console.log(result);
 				for(var i=0;i<code.length-1;i++){
 					if(lineNo==(i+1)){//背景是红色,
 						$("#codeArea").append("<div class='problem-line'><span class='source-meta w-source-line-number'> "+(i+1)+"</span>"+code[i]+"</div><br />");
@@ -240,7 +263,6 @@ $(document).ready(function(){
 	window.getEvents={
 
 			"click #checkButton":function(e,value,row,index){
-				console.log(row);
 				//获得代码显示
 				$.ajax({
 					type:"POST",
@@ -256,7 +278,7 @@ $(document).ready(function(){
 	};
 	$("#codeCheckTable").bootstrapTable({
 		method: 'get',
-		url:"http://localhost:8088/staticCheck/problem/Student/VULNERABILITY",//要请求数据的文件路径
+		url:"http://localhost:8088/staticCheck/problem/"+projectKey+"/VULNERABILITY",//要请求数据的文件路径
 		//url:"http://localhost:8088/staticCheck/problem/Student/CODE_SMELL",
 		//url:"http://localhost:8088/staticCheck/problem/Student/BUG",
 		pageNumber: 1, //初始化加载第一页，默认第一页

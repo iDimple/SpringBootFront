@@ -1,8 +1,29 @@
 $(document).ready(function () {
+	var projectKey="Student";
+	function toaster(message, type) {
+		var toaster = $("#toaster");
+		toaster.append('<div class="toast-item"><div class="message">' + message + '</div>' +
+		'<i class="close fa fa-close"></i></div>');
+		var thisItem = toaster.children().last();
+		$(thisItem.children(".close").eq(0)).bind("click", function () {
+			thisItem.slideUp(function() {
+				//thisItem.remove();
+			});
+		});
+		if (type == "success") thisItem.addClass("success");
+		else if (type == "error") thisItem.addClass("error");
+		thisItem.fadeIn();
+		setTimeout(function() {
+			thisItem.slideUp(function() {
+			//	thisItem.remove();
+			});
+		}, 3000);
+	}
+	
 	function fillIndex(){
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/config/"+"Student",
+			url:"http://localhost:8088/staticCheck/config/"+projectKey,
 			async:true,
 			success:function(result){
 				$("#projectName").val(result.projectName);
@@ -18,7 +39,7 @@ $(document).ready(function () {
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/config/"+"Student",
+			url:"http://localhost:8088/staticCheck/config/"+projectKey,
 			async:true,
 			success:function(result){
 				$("#projectName").val(result.projectName);
@@ -33,7 +54,24 @@ $(document).ready(function () {
 	fillIndex();
 	fillData();
 	getDetail=function (){
-		window.location.href="detail.html";
+		$('#loading').show();
+		$.ajax({
+			type:"POST",
+			url:"http://localhost:8088/staticCheck/statistic/"+projectKey,
+			async:true,
+			success:function(result){
+				//请求完成，隐藏模态框
+				$('#loading').hide();
+				toaster("检查成功！","success");
+				window.location.href="detail.html?projectKey="+escape(projectKey);
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				toaster("请先配置参数！","error");
+				//请求完成，隐藏模态框
+				$('#loading').hide();
+			}
+		});
+
 	}
 
 	$("#submitConfig").click(function(){
@@ -42,7 +80,7 @@ $(document).ready(function () {
 			type:"POST",
 			contentType: "application/json",
 			data:	JSON.stringify({
-				"projectKey":"Student",
+				"projectKey":projectKey,
 				"projectName":$("#projectName").val(),
 				"language":$("#langSelec").val(),
 				"sourceEncoding":$("#encodeSelec").val()
@@ -61,47 +99,13 @@ $(document).ready(function () {
 			}
 		});
 	});
-	//$('#loading').show();
-//	$.ajax({
-//	type:"GET",
-//	url:"http://localhost:8088/staticCheck/config/1",
-//	async:true,
-//	success:function(result){
-//	console.log(result);
-//	//请求完成，隐藏模态框
-//	$('#loading').hide();
-//	},
-//	error:function(XMLHttpRequest, textStatus, errorThrown){
-//	console.log(textStatus);
-//	//请求完成，隐藏模态框
-//	$('#loading').hide();
-//	}
-//	});
-	//tableHeight函数
+
 
 
 });
 
 
-function toaster(message, type) {
-	var toaster = $("#toaster");
-	toaster.append('<div class="toast-item"><div class="message">' + message + '</div>' +
-	'<i class="close fa fa-close"></i></div>');
-	var thisItem = toaster.children().last();
-	$(thisItem.children(".close").eq(0)).bind("click", function () {
-		thisItem.slideUp(function() {
-			thisItem.remove();
-		});
-	});
-	if (type == "success") thisItem.addClass("success");
-	else if (type == "error") thisItem.addClass("error");
-	thisItem.fadeIn();
-	setTimeout(function() {
-		thisItem.slideUp(function() {
-			thisItem.remove();
-		});
-	}, 3000);
-}
+
 
 function adminLightItem() {
 	if ($("#admin-nav-items")) {
