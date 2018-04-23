@@ -1,29 +1,29 @@
 $(document).ready(function(){
 	/**
 
-	*paramStr:name=name&type=type...
+	 *paramStr:name=name&type=type...
 
-	*keyList;[name,key,...]
+	 *keyList;[name,key,...]
 
-	*/
+	 */
 
 	function getValue(paramStr,keyList){
 
-	    var valueList=[];
+		var valueList=[];
 
-	    paramStr=paramStr.split("&");
+		paramStr=paramStr.split("&");
 
-	    for(var i=0;i<paramStr.length;i++){
+		for(var i=0;i<paramStr.length;i++){
 
-	        var value=paramStr[i];//name=name
+			var value=paramStr[i];//name=name
 
-	        value=unescape(value.split("=")[1]);//name
+			value=unescape(value.split("=")[1]);//name
 
-	        valueList.push(value);
+			valueList.push(value);
 
-	    }
+		}
 
-	    return valueList;
+		return valueList;
 
 	}
 	var paramStr=window.location.href.split("?")[1];
@@ -299,12 +299,22 @@ $(document).ready(function(){
 			{
 				title:'严重性',
 				field:'severity',
-				sortable:true
+				sortable:true,
+				filter: {
+					type: "select",
+					data: ["MINOR","MAJOR"]
+				}
 			},
 			{
 				title:'所在文件',
 				field:'filePath',
-				sortable:true
+				sortable:false,
+				filter: {
+					type: "input",
+				},
+				formatter:function(value,row,index){
+					return value.split(":")[1];
+				}
 			},
 			{
 				title:'问题描述',
@@ -336,6 +346,12 @@ $(document).ready(function(){
 			responseHandler:function(res){
 				//在ajax获取到数据，渲染表格之前，修改数据源
 				return res;
+			},
+			filter: true,
+			filterTemplate: {
+				input: function(bootstrapTable, column, isVisible) {
+					return '<input type="text" class="form-control input-sm" data-filter-field="' + column.field + '" style="width: 100%; visibility:' + isVisible + '">';
+				}
 			}
 	})
 

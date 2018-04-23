@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Select2 Filter</title>
+<meta charset="utf-8">
+<!--   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" />
+
+  <script src="../assets/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+  <script src="../assets/bootstrap-table/src/extensions/select2-filter/bootstrap-table-select2-filter.js"></script> -->
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/sonar.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="assets/js/echarts.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="assets/js/select2.min.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-table-select2-filter.min.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-table-zh-CN.min.js"></script>
+<script>
+    $(function() {
+    
+      var options = {
+        url: "data1.json",
+        pageNumber: 1, //初始化加载第一页，默认第一页
+		pagination:true,//是否分页
+		// sidePagination:'server',//指定服务器端分页
+		pageSize:5,//单页记录数
+		pageList:[5,10],//分页步进值
+		showRefresh:true,//刷新按钮
+		clickToSelect: true,//是否启用点击选中行
+		toolbarAlign:'right',//工具栏对齐方式
+		queryParams : function(params) {
+			return {
+				offset: params.offset+1,
+				pageSize: params.limit,
+			};
+		},
+        columns: [{
+            field: "id",
+            title: "ID",
+            filter: {
+              type: "input"
+            }
+          },
+          {
+            field: "name",
+            title: "Item Name",
+            filter: {
+              type: "select",
+              data: []
+            }
+          },
+          {
+            field: "price",
+            title: "Item Price",
+            filter: {
+              type: "select",
+              data: ["", "$1", "$2", "$3"]
+            }
+          },
+          {
+            field: "amount",
+            title: "Amount",
+            width: 200,
+            
+          }
+        ],
+        filter: true,
+        filterTemplate: {
+          input: function(bootstrapTable, column, isVisible) {
+            return '<input type="text" class="form-control input-sm" data-filter-field="' + column.field + '" style="width: 100%; visibility:' + isVisible + '">';
+          }
+        }
+      };
+      var $table = $("#table").bootstrapTable(options);
+     /*  $table.bootstrapTable("setSelect2Data", "name", ["", "item 1", "item 2", "item 3"]); */
+    });
+  </script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Select2 Filter</h1>
+		<table id="table"></table>
+	</div>
+</body>
+
+</html>

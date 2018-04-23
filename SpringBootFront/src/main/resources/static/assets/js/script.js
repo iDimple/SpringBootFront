@@ -23,12 +23,13 @@ $(document).ready(function () {
 	function fillIndex(){
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/config/"+projectKey,
+			url:"http://localhost:8088/staticCheck/statistic/"+projectKey,
 			async:true,
 			success:function(result){
-				$("#projectName").val(result.projectName);
-				$('#langSelec').selectpicker('val',result.language);
-				$('#encodeSelec').selectpicker('val',result.sourceEncoding);
+				$("#lastTime").html(result.lastAnalyse);
+				$("#health").html(result.healthDegree);
+				$("#risk").html(result.riskIndex);
+				$("#problemNo").html(result.unresolvedProblems);
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				console.log(textStatus);
@@ -88,7 +89,6 @@ $(document).ready(function () {
 			url:"http://localhost:8088/staticCheck/config",
 			async:true,
 			success:function(result){
-				console.log(result);
 				$("#paramConfig").modal('hide');  //手动关闭
 
 			},
@@ -113,7 +113,6 @@ function adminLightItem() {
 		for(var i = 0; i < items.length; i++) {
 			var item = $(items[i]);
 			var url = window.location.href;
-			console.log(item.attr("url"));
 			if (url.indexOf(item.attr("url")) != -1) {
 				item.addClass("active");
 				break;
