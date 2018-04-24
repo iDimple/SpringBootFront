@@ -39,7 +39,7 @@
 
 
 .tableTitle {
-	margin-left: 20px;
+	margin-left: 20px!important;
 	position: relative;
 	top: 30px;
 }

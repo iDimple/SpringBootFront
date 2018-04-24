@@ -272,15 +272,15 @@ $(document).ready(function(){
 					success:function(result){
 						showRule(row,result);
 					},
-					error:function(err){}
+					error:function(err){
+						console.log(err);
+					}
 				});
 			}
 	};
 	$("#codeCheckTable").bootstrapTable({
 		method: 'get',
-		url:"http://localhost:8088/staticCheck/problem/"+projectKey+"/VULNERABILITY",//要请求数据的文件路径
-		//url:"http://localhost:8088/staticCheck/problem/Student/CODE_SMELL",
-		//url:"http://localhost:8088/staticCheck/problem/Student/BUG",
+		url:"http://localhost:8088/staticCheck/problem/"+projectKey,
 		pageNumber: 1, //初始化加载第一页，默认第一页
 		pagination:true,//是否分页
 		sidePagination:'server',//指定服务器端分页
@@ -293,25 +293,26 @@ $(document).ready(function(){
 			return {
 				offset: params.offset+1,
 				pageSize: params.limit,
+				fileName:$("#fileName").val(),
+				severity:$("#severity").val(),
+				type:$("#type").val()
 			};
 		},
 		columns:[
 			{
+				title:'问题类型',
+				field:'type',
+				sortable:false
+			},
+			{
 				title:'严重性',
 				field:'severity',
-				sortable:true,
-				filter: {
-					type: "select",
-					data: ["MINOR","MAJOR"]
-				}
+				sortable:true
 			},
 			{
 				title:'所在文件',
 				field:'filePath',
 				sortable:false,
-				filter: {
-					type: "input",
-				},
 				formatter:function(value,row,index){
 					return value.split(":")[1];
 				}
@@ -319,15 +320,6 @@ $(document).ready(function(){
 			{
 				title:'问题描述',
 				field:'message'
-			},
-			{
-				title:'问题类型',
-				field:'type',
-				sortable:true,
-				cellStyle:{  
-					css:{"background-color":"pink"}  
-				}  ,
-				visible:false
 			},
 			{
 				title:'所在行数',
@@ -346,14 +338,11 @@ $(document).ready(function(){
 			responseHandler:function(res){
 				//在ajax获取到数据，渲染表格之前，修改数据源
 				return res;
-			},
-			filter: true,
-			filterTemplate: {
-				input: function(bootstrapTable, column, isVisible) {
-					return '<input type="text" class="form-control input-sm" data-filter-field="' + column.field + '" style="width: 100%; visibility:' + isVisible + '">';
-				}
 			}
 	})
+	$("#filterButton").click(function(){
+		$("#codeCheckTable").bootstrapTable(("refresh"));
+	});
 
 	function tableHeight(){
 		//可以根据自己页面情况进行调整

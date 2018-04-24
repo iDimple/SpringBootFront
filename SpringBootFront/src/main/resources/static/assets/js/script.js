@@ -43,7 +43,7 @@ $(document).ready(function () {
 			url:"http://localhost:8088/staticCheck/config/"+projectKey,
 			async:true,
 			success:function(result){
-				$("#projectName").val(result.projectName);
+				//$("#projectName").val(result.projectName);
 				$('#langSelec').selectpicker('val',result.language);
 				$('#encodeSelec').selectpicker('val',result.sourceEncoding);
 			},
@@ -82,7 +82,7 @@ $(document).ready(function () {
 			contentType: "application/json",
 			data:	JSON.stringify({
 				"projectKey":projectKey,
-				"projectName":$("#projectName").val(),
+				//"projectName":$("#projectName").val(),
 				"language":$("#langSelec").val(),
 				"sourceEncoding":$("#encodeSelec").val()
 			}),
