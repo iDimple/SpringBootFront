@@ -64,20 +64,20 @@
 				</div>
 			</div>
 			<div class="panel panel-info panel-area">
-				<div class="panel-heading head">安全性－－Code Smells</div>
+				<div class="panel-heading head">可维护性－－Code Smells</div>
 				<div class="panel-body">
-					<div class="text-muted">Vulnerabilities are raised on code
-						that is potentially vulnerable to exploitation by hackers.</div>
+					<div class="text-muted">Code Smells will confuse maintainers
+						or give them pause. They are measured primarily in terms of the
+						time they will take to fix.</div>
 					<div class="chart-div" id="chart-codeSmell"
 						style="width: 700px; height: 430px;"></div>
 				</div>
 			</div>
 			<div class="panel panel-info panel-area">
-				<div class="panel-heading head">可维护性－－Vulnerabilitis</div>
+				<div class="panel-heading head">安全性－－Vulnerabilitis</div>
 				<div class="panel-body">
-					<div class="text-muted">Code Smells will confuse maintainers
-						or give them pause. They are measured primarily in terms of the
-						time they will take to fix.</div>
+					<div class="text-muted">Vulnerabilities are raised on code
+						that is potentially vulnerable to exploitation by hackers.</div>
 					<div class="chart-div" id="chart-vulnerabilities"
 						style="width: 700px; height: 430px;"></div>
 				</div>
@@ -96,6 +96,7 @@
 					<option value="CRITICAL">CRITICAL</option>
 					<option value="MAJOR">MAJOR</option>
 					<option value="MINOR">MINOR</option>
+					<option value="INFO">INFO</option>
 				</select> <input type="text" placeholder="请输入文件名" class="inputText"
 					id="fileName">
 				<button id="filterButton" type="button"

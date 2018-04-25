@@ -34,17 +34,19 @@
 						<div class="col-xs-4 text-info" id="lastTime">March 27, 2018, 6:04 PM</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-3 text-muted">健康度:</div>
-						<div class="col-xs-4 text-info" id="health" title="星级数=风险指数/KLoc（千行代码),当值在0和0.8之前为5星，在0.8和2之间为4星，在2和5之间为3星，在5和10之间为2星，大于10为1星。">5颗星</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 text-muted">风险指数:</div>
-						<div class="col-xs-4 text-info" id="risk" title="风险指数＝3*bugs+2*codeSmell+1*vulnerabilities,分数越高代码风险越大。">78分</div>
-					</div>
-					<div class="row">
 						<div class="col-xs-3 text-muted">总问题个数:</div>
 						<div class="col-xs-4 text-info" id="problemNo" title="bugs、codeSmell和vulnerabilities数之和。">26个</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-3 text-muted" title="5*blocker+4*critical+3*major+2*minor+1*info,分数越高代码风险越大。">加权问题指数:</div>
+						<div class="col-xs-4 text-info" id="risk" title="5*blocker+4*critical+3*major+2*minor+1*info,分数越高代码风险越大。">78分</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3 text-muted">加权问题密度:</div>
+						<div class="col-xs-4 text-info" id="health" title="加权问题指数/KLoc（千行代码)">150</div>
+					</div>
+					
+					
 					<div class="row">
 						<button type="button" class="right-button btn btn-primary"
 							onclick="getDetail()">开始检查</button>
