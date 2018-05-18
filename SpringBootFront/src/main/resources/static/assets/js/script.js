@@ -1,5 +1,70 @@
 $(document).ready(function () {
-	var projectKey="Student";
+	var baseUrl="http://139.219.66.203:8088";
+	/**
+
+	 *paramStr:name=name&type=type...
+
+	 *keyList;[name,key,...]
+
+	 */
+
+	function getValue(paramStr,keyList){
+
+		var valueList=[];
+
+		paramStr=paramStr.split("&");
+
+		for(var i=0;i<paramStr.length;i++){
+
+			var value=paramStr[i];//name=name
+
+			value=unescape(value.split("=")[1]);//name
+
+			valueList.push(value);
+
+		}
+
+		return valueList;
+
+	}
+	//var paramStr=window.location.href.split("?")[1];
+	//var params=getValue(paramStr,["groupId","groupName","projectId","projectName"]);
+	//$("#projectName").html(params[3]);
+	var projectKey="testormytestproject";
+	
+	deleteRule=function (obj){
+		//js转换成jquery
+		var thisObj=$(obj);
+		thisObj.parent().html("");
+	}
+	$("#uploadfile").fileinput({
+		language: 'zh', //设置语言
+		uploadUrl: baseUrl+"/staticCheck/customRule/"+projectKey, //上传的地址
+		allowedFileExtensions: ['jar'],//接收的文件后缀
+		uploadAsync: true, //默认异步上传
+		showUpload: true, //是否显示上传按钮   
+		showRemove : true, //显示移除按钮
+		showPreview : true, //是否显示预览
+		showCaption: false,//是否显示标题
+		browseClass: "btn btn-primary", //按钮样式     
+		dropZoneEnabled: false,//是否显示拖拽区域
+		maxFileCount: 1, //表示允许同时上传的最大文件个数
+		enctype: 'multipart/form-data',
+		validateInitialCount:true
+	});
+	//异步上传返回结果处理
+	$("#uploadfile").on("fileuploaded", function (event, data, previewId, index) {
+		var response = data.response;
+		console.log(response.filePath); 
+		//显示在已有自定义规则
+		$("#customRuleSelected").append("<div>"+response.filePath+'<img src="assets/img/delete.png" alt="删除" style="cursor:pointer;"  onclick="deleteRule(this)"></div>');
+	});
+	//上传前
+	$('#uploadfile').on('filepreupload', function(event, data, previewId, index) {
+		var form = data.form, files = data.files, extra = data.extra,
+		response = data.response, reader = data.reader;
+	});
+
 	function toaster(message, type) {
 		var toaster = $("#toaster");
 		toaster.append('<div class="toast-item"><div class="message">' + message + '</div>' +
@@ -15,15 +80,15 @@ $(document).ready(function () {
 		thisItem.fadeIn();
 		setTimeout(function() {
 			thisItem.slideUp(function() {
-			//	thisItem.remove();
+				//	thisItem.remove();
 			});
 		}, 3000);
 	}
-	
+
 	function fillIndex(){
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/statistic/"+projectKey,
+			url:baseUrl+"/staticCheck/statistic/"+projectKey,
 			async:true,
 			success:function(result){
 				$("#lastTime").html(result.lastAnalyse);
@@ -40,7 +105,7 @@ $(document).ready(function () {
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/config/"+projectKey,
+			url:baseUrl+"/staticCheck/config/"+projectKey,
 			async:true,
 			success:function(result){
 				//$("#projectName").val(result.projectName);
@@ -58,13 +123,16 @@ $(document).ready(function () {
 		$('#loading').show();
 		$.ajax({
 			type:"POST",
-			url:"http://localhost:8088/staticCheck/statistic/"+projectKey,
+			url:baseUrl+"/staticCheck/statistic/"+projectKey,
 			async:true,
 			success:function(result){
 				//请求完成，隐藏模态框
 				$('#loading').hide();
 				toaster("检查成功！","success");
-				window.location.href="detail.html?projectKey="+escape(projectKey);
+				//在本窗口打开
+				//window.location.href="detail.html?projectKey="+escape(projectKey);
+				//在新窗口打开
+				window.open("detail.html?projectKey="+escape(projectKey));
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				toaster("请先配置参数！","error");
@@ -86,7 +154,7 @@ $(document).ready(function () {
 				"language":$("#langSelec").val(),
 				"sourceEncoding":$("#encodeSelec").val()
 			}),
-			url:"http://localhost:8088/staticCheck/config",
+			url:baseUrl+"/staticCheck/config",
 			async:true,
 			success:function(result){
 				$("#paramConfig").modal('hide');  //手动关闭
@@ -107,69 +175,6 @@ $(document).ready(function () {
 
 
 
-function adminLightItem() {
-	if ($("#admin-nav-items")) {
-		var items = $("#admin-nav-items").children();
-		for(var i = 0; i < items.length; i++) {
-			var item = $(items[i]);
-			var url = window.location.href;
-			if (url.indexOf(item.attr("url")) != -1) {
-				item.addClass("active");
-				break;
-			}
-		}
 
-	}
-}
 
-function datePicker() {
-	try {
-		$('.date-picker').each(function () {
-			$(this).datetimepicker({
-				lang:'ch',
-				timepicker:false,
-				format:'Y-m-d',
-				formatDate:'Y/m/d',
-				minDate: '1916/01/01',
-				maxDate:'+1970/03/01',
-				yearStart: 1916,
-				yearEnd: 2016,
-				scrollInput: false
-			})
-		});
-	} catch (e) {
-		console.log(e);
-	}
-}
-
-function getWeek(day) {
-	switch (day) {
-	case 0: return '日';
-	case 1: return '一';
-	case 2: return '二';
-	case 3: return '三';
-	case 4: return '四';
-	case 5: return '五';
-	case 6: return '六';
-	}
-}
-
-//Date 格式化
-Date.prototype.Format = function(fmt) {
-	var o = {
-			"M+" : this.getMonth()+1,                 //月份
-			"d+" : this.getDate(),                    //日
-			"h+" : this.getHours(),                   //小时
-			"m+" : this.getMinutes(),                 //分
-			"s+" : this.getSeconds(),                 //秒
-			"q+" : Math.floor((this.getMonth()+3)/3), //季度
-			"S"  : this.getMilliseconds()             //毫秒
-	};
-	if(/(y+)/.test(fmt))
-		fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
-	for(var k in o)
-		if(new RegExp("("+ k +")").test(fmt))
-			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-	return fmt;
-};
 

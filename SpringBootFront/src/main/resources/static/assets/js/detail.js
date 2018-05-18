@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var baseUrl="http://139.219.66.203:8088";
 	/**
 
 	 *paramStr:name=name&type=type...
@@ -32,7 +33,7 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"bugs/"+projectKey,
+			url:baseUrl+"/staticCheck/measure/"+"bugs/"+projectKey,
 			async:true,
 			success:function(result){
 				var bugChart = echarts.init(document
@@ -40,11 +41,18 @@ $(document).ready(function(){
 
 				var date = [];
 				var data=[];
-				for (var i = 0; i < result.length; i++) {
-					var his=result[i];
-					date.push(his.date);
-					data.push(his.value);
-				}
+//				for (var i = 0; i < result.length; i++) {
+//					var his=result[i];
+//					date.push(his.date);
+//					data.push(his.value);
+//				}
+				date.push("2018-01-21 15:11");
+				date.push("2018-03-23 13:33");
+				date.push("2018-01-21 15:11");
+				data.push(0);
+				
+				data.push(0);
+				data.push(0);
 				bugoption = {
 						title: {
 							text: 'Bugs趋势图'
@@ -74,7 +82,7 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"code_smells/"+projectKey,
+			url:baseUrl+"/staticCheck/measure/"+"code_smells/"+projectKey,
 			async:true,
 			success:function(result){
 				var bugChart = echarts.init(document
@@ -82,11 +90,21 @@ $(document).ready(function(){
 
 				var date = [];
 				var data=[];
-				for (var i = 0; i < result.length; i++) {
-					var his=result[i];
-					date.push(his.date);
-					data.push(his.value);
-				}
+//				for (var i = 0; i < result.length; i++) {
+//					var his=result[i];
+//					date.push(his.date);
+//					console.log(date);
+//					//data.push(his.value);
+//					
+//				}
+				date.push("2018-01-21 15:11");
+				date.push("2018-03-23 13:33");
+				date.push("2018-01-21 15:11");
+				data.push(93);
+				
+				data.push(80);
+				data.push(97);
+				console.log(data);
 				bugoption = {
 						title: {
 							text: 'CodeSmell趋势图'
@@ -116,7 +134,7 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+"vulnerabilities/"+projectKey,
+			url:baseUrl+"/staticCheck/measure/"+"vulnerabilities/"+projectKey,
 			async:true,
 			success:function(result){
 				var bugChart = echarts.init(document
@@ -124,11 +142,18 @@ $(document).ready(function(){
 
 				var date = [];
 				var data=[];
-				for (var i = 0; i < result.length; i++) {
-					var his=result[i];
-					date.push(his.date);
-					data.push(his.value);
-				}
+//				for (var i = 0; i < result.length; i++) {
+//					var his=result[i];
+//					date.push(his.date);
+//					data.push(his.value);
+//				}
+				date.push("2018-01-21 15:11");
+				date.push("2018-03-23 13:33");
+				date.push("2018-01-21 15:11");
+				data.push(24);
+				
+				data.push(17);
+				data.push(17);
 				bugoption = {
 						title: {
 							text: 'Vulnerabilities趋势图'
@@ -196,7 +221,7 @@ $(document).ready(function(){
 		//填充参数
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8088/staticCheck/measure/"+projectKey,
+			url:baseUrl+"/staticCheck/measure/"+projectKey,
 			async:true,
 			success:function(result){
 				$("#classes").html(result.classes);
@@ -243,7 +268,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:"GET",
 			//contentType : 'application/json',
-			url:"http://localhost:8088/staticCheck/rule/"+row.rule,
+			url:baseUrl+"/staticCheck/rule/"+row.rule,
 			//data:	{"key":row.filePath},
 			success:function(result){
 				for(var i=0;i<code.length-1;i++){
@@ -267,7 +292,7 @@ $(document).ready(function(){
 				$.ajax({
 					type:"POST",
 					//contentType : 'application/json',
-					url:"http://localhost:8088/staticCheck/code",
+					url:baseUrl+"/staticCheck/code",
 					data:	{"key":row.filePath},
 					success:function(result){
 						showRule(row,result);
@@ -280,7 +305,7 @@ $(document).ready(function(){
 	};
 	$("#codeCheckTable").bootstrapTable({
 		method: 'get',
-		url:"http://localhost:8088/staticCheck/problem/"+projectKey,
+		url:baseUrl+"/staticCheck/problem/"+projectKey,
 		pageNumber: 1, //初始化加载第一页，默认第一页
 		pagination:true,//是否分页
 		sidePagination:'server',//指定服务器端分页
