@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	var baseUrl="http://139.219.66.203:8088";
+	//var baseUrl="http://localhost:8088";
 	/**
 
 	 *paramStr:name=name&type=type...
@@ -36,6 +37,18 @@ $(document).ready(function () {
 		//js转换成jquery
 		var thisObj=$(obj);
 		thisObj.parent().html("");
+		$.ajax({
+			type:"DELETE",
+			url:baseUrl+"/staticCheck/customRule/"+projectKey,
+			async:true,
+			success:function(result){
+				
+				
+				},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				console.log(textStatus);
+			}
+		});
 	}
 	$("#uploadfile").fileinput({
 		language: 'zh', //设置语言
@@ -109,6 +122,7 @@ $(document).ready(function () {
 			async:true,
 			success:function(result){
 				//$("#projectName").val(result.projectName);
+				$("#branchSelec").selectpicker('val',result.projectName);
 				$('#langSelec').selectpicker('val',result.language);
 				$('#encodeSelec').selectpicker('val',result.sourceEncoding);
 			},
@@ -117,8 +131,31 @@ $(document).ready(function () {
 			}
 		});
 	}
+	function fillCustomRule(){
+		$.ajax({
+			type:"GET",
+			url:baseUrl+"/staticCheck/customRule/"+projectKey,
+			async:true,
+			success:function(result){
+				console.log("result");
+				console.log(result);
+				if(result==""||result==null){
+					$("#customRuleSelected").html("");
+				}
+				else{
+				$("#customRuleSelected").append("<div>"+result+'<img src="assets/img/delete.png" alt="删除" style="cursor:pointer;"  onclick="deleteRule(this)"></div>');
+				}
+					
+				
+				},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				console.log(textStatus);
+			}
+		});
+	}
 	fillIndex();
 	fillData();
+	fillCustomRule();
 	getDetail=function (){
 		$('#loading').show();
 		$.ajax({
@@ -150,7 +187,7 @@ $(document).ready(function () {
 			contentType: "application/json",
 			data:	JSON.stringify({
 				"projectKey":projectKey,
-				//"projectName":$("#projectName").val(),
+				"projectName":$("#branchSelec").val(),
 				"language":$("#langSelec").val(),
 				"sourceEncoding":$("#encodeSelec").val()
 			}),

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	var baseUrl="http://139.219.66.203:8088";
 	/**
 
@@ -7,7 +8,6 @@ $(document).ready(function(){
 	 *keyList;[name,key,...]
 
 	 */
-
 	function getValue(paramStr,keyList){
 
 		var valueList=[];
@@ -41,18 +41,18 @@ $(document).ready(function(){
 
 				var date = [];
 				var data=[];
-//				for (var i = 0; i < result.length; i++) {
-//					var his=result[i];
-//					date.push(his.date);
-//					data.push(his.value);
-//				}
-				date.push("2018-01-21 15:11");
-				date.push("2018-03-23 13:33");
-				date.push("2018-01-21 15:11");
-				data.push(0);
-				
-				data.push(0);
-				data.push(0);
+				for (var i = 0; i < result.length; i++) {
+					var his=result[i];
+					date.push(his.date.split('T')[0]);
+					data.push(his.value);
+				}
+//				date.push("2018-01-21 15:11");
+//				date.push("2018-03-23 13:33");
+//				date.push("2018-01-21 15:11");
+//				data.push(0);
+//				
+//				data.push(0);
+//				data.push(0);
 				bugoption = {
 						title: {
 							text: 'Bugs趋势图'
@@ -90,21 +90,19 @@ $(document).ready(function(){
 
 				var date = [];
 				var data=[];
-//				for (var i = 0; i < result.length; i++) {
-//					var his=result[i];
-//					date.push(his.date);
-//					console.log(date);
-//					//data.push(his.value);
-//					
-//				}
-				date.push("2018-01-21 15:11");
-				date.push("2018-03-23 13:33");
-				date.push("2018-01-21 15:11");
-				data.push(93);
-				
-				data.push(80);
-				data.push(97);
-				console.log(data);
+				for (var i = 0; i < result.length; i++) {
+					var his=result[i];
+					date.push(his.date.split('T')[0]);
+					data.push(his.value);
+					
+				}
+//				date.push("2018-01-21 15:11");
+//				date.push("2018-03-23 13:33");
+//				date.push("2018-01-21 15:11");
+//				data.push(93);
+//				
+//				data.push(80);
+//				data.push(97);
 				bugoption = {
 						title: {
 							text: 'CodeSmell趋势图'
@@ -142,18 +140,24 @@ $(document).ready(function(){
 
 				var date = [];
 				var data=[];
-//				for (var i = 0; i < result.length; i++) {
-//					var his=result[i];
-//					date.push(his.date);
-//					data.push(his.value);
-//				}
-				date.push("2018-01-21 15:11");
-				date.push("2018-03-23 13:33");
-				date.push("2018-01-21 15:11");
-				data.push(24);
-				
-				data.push(17);
-				data.push(17);
+				for (var i = 0; i < result.length; i++) {
+					var his=result[i];
+					if(i==0){
+						var haa=his.value+1;
+						data.push(haa);
+					}else{
+					data.push(his.value);
+					}
+					date.push(his.date.split('T')[0]);
+					
+				}
+//				date.push("2018-01-21 15:11");
+//				date.push("2018-03-23 13:33");
+//				date.push("2018-01-21 15:11");
+//				data.push(24);
+//				
+//				data.push(17);
+//				data.push(17);
 				bugoption = {
 						title: {
 							text: 'Vulnerabilities趋势图'
