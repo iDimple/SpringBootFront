@@ -1,0 +1,19 @@
+.box {
+	display: table;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 10px;
+}
+
+
+.left {
+	width: 105px;
+	display: table-cell;
+}
+
+.right {
+	display: table-cell;
+}
+.single{
+	background-color:lightgray;
+}

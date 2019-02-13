@@ -7,6 +7,7 @@ $(document).ready(function(){
 	
 	 getDetail=function(id){
 		alert(id);
+		window.open("word.html");
 	}
 	 getCaptical=function(captical){
 		 var cap="A";
@@ -78,6 +79,17 @@ $(document).ready(function(){
 							||i==171||i==177||i==214||i==221||i==228||i==240){
 						$("#dictionaryArea").append(getCaptical(i));
 					}
+					if(i%2==0){
+						$("#dictionaryArea").append(
+								"<div class='box single'>"+
+								"<a class='left' href='javascript:void(0)' onclick='getDetail("+"\"" + results[i]["s"]["value"]+ "\"" +")'>"+　
+								results[i]["name"]["value"]
+						+"</a>"
+						+"<span class='right'>"+results[i]["rule"]["value"]+"</span>"
+					
+						+"</div>"
+						);
+					}else{
 					$("#dictionaryArea").append(
 							"<div class='box'>"+
 							"<a class='left' href='javascript:void(0)' onclick='getDetail("+"\"" + results[i]["s"]["value"]+ "\"" +")'>"+　
@@ -87,6 +99,7 @@ $(document).ready(function(){
 				
 					+"</div>"
 					);
+					}
 				}
 				
 				

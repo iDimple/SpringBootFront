@@ -6,12 +6,25 @@
 <title>基于编程规范的问答系统</title>
 
 <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="assets/js/dataset.js"></script>
+
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/qonsole.css">
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-</head>	
+<link href="assets/css/yasr.min.css" rel="stylesheet">
+<link href="assets/css/yasqe.min.css" rel="stylesheet">
+<link href="assets/css/codemirror.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/dataset.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap-table.min.css">
+
+<script type="text/javascript" src="assets/js/bootstrap-table.min.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-table-zh-CN.min.js"></script>
+	
+	<script type="text/javascript" src="assets/js/dataset.js"></script>
+</head>
 <body>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -26,28 +39,58 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class=""><a href="index.html">介绍</a></li>
-						<li ><a href="download.html">编程规范百科</a></li>
-					<li ><a href="download.html">编程规范问答</a></li>
-						<li class=""><a href="dataset.html" >Sparql检索</a></li>
-					<li class="active"><a href="download.html" target="_blank">下载</a></li>
-				
-					
+					<li><a href="index.html">介绍</a></li>
+					<li><a href="dictionary.html" >编程规范实体词典</a></li>
+					<li><a href="download.html" >编程规范问答</a></li>
+					<li class="active"><a href="dataset.html" >Sparql查询</a></li>
+					<li><a href="download.html" target="_blank">下载</a></li>
+
+
 				</ul>
 			</div>
-		
 
-			
-         
-            <div class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="page-header">
-					<input type="text" id="myTextbox" />
-					<button onclick="getCMD()"> nniu</button>
+
+
+
+			<div
+				class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<div>
+					<a href="" class="bgbtn02 btn"> <img
+						src="assets/img/yunxing.png" />运行
+					</a>
+
 				</div>
-			</div>	
-       
-     
-		</div>
-	</div>
+				<div class="qonsole">
+					<div class="col-md-12 well">
+
+
+						<textarea class="cmdtable">
+PREFIX rdf: <http://www.w3.org/2018/mycard-rdf/1.0#>
+SELECT  ?p ?o
+WHERE {
+  <http://www.se.org/#LanguageSoftwareSpecification/1> ?p ?o.
+}
+
+</textarea>
+
+
+					</div>
+
+
+				</div>
+				<div class="qonsole">
+					<div>查询结果</div>
+					<div class="col-md-12 well">
+
+						<table id="queryresultTable" class="queryTable">
+							
+						</table>
+
+
+					</div>
+
+
+				</div>
+			</div>
 </body>
 </html>
