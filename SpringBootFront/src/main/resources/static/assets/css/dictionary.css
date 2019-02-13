@@ -1,0 +1,36 @@
+.box {
+	display: table;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 10px;
+}
+
+.captial {
+	font-size: 30px;
+	background-color: yellow;
+}
+
+.left {
+	width: 305px;
+	display: table-cell;
+}
+
+.right {
+	display: table-cell;
+}
+
+.fixed{
+	position:fixed;
+}
+
+.dictIndex{
+	margin-bottom:20px;
+	width:100%;
+	z-index:1003;
+	background-color:white;
+}
+
+.fixplace{
+	margin-top:110px;
+
+}
