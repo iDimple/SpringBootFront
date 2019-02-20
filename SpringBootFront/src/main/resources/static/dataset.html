@@ -5,7 +5,7 @@
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
 <title>基于编程规范的问答系统</title>
 
-<script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="assets/media/js/jquery.js"></script>
 
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap.min.css">
@@ -19,17 +19,28 @@
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap-table.min.css">
 
- 
+
 
 <script type="text/javascript" src="assets/js/codemirror.js"></script>
 
- <script type="text/javascript" src="assets/js/codemirrorsparql.js"></script>
+<script type="text/javascript" src="assets/js/codemirrorsparql.js"></script>
 
 <script type="text/javascript" src="assets/js/bootstrap-table.min.js"></script>
 <script type="text/javascript"
 	src="assets/js/bootstrap-table-zh-CN.min.js"></script>
-	
-	<script type="text/javascript" src="assets/js/dataset.js"></script>
+
+<script type="text/javascript" src="assets/js/dataset.js"></script>
+
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css"
+	href="assets/media/css/jquery.dataTables.css">
+
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8"
+	src="assets/media/js/jquery.dataTables.js"></script>
+
 </head>
 <body>
 
@@ -46,10 +57,10 @@
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
 					<li><a href="index.html">介绍</a></li>
-					<li><a href="dictionary.html" >编程规范实体词典</a></li>
-					<li><a href="qa.html" >编程规范问答</a></li>
-					<li class="active"><a href="dataset.html" >Sparql查询</a></li>
-					<li><a href="download.html" >下载</a></li>
+					<li><a href="dictionary.html">编程规范实体词典</a></li>
+					<li><a href="qa.html">编程规范问答</a></li>
+					<li class="active"><a href="dataset.html">Sparql查询</a></li>
+					<li><a href="download.html">下载</a></li>
 
 
 				</ul>
@@ -60,30 +71,53 @@
 
 			<div
 				class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div>
-					<a href="" class="bgbtn02 btn"> <img
-						src="assets/img/yunxing.png" />运行
-					</a>
 
-				</div>
+
+				<Button id="yunxing">
+					<img src="assets/img/yunxing.png" width="20" height="20" id="imgYX">运行
+				</Button>
+
 				<div class="qonsole">
 					<div class="col-md-12 well">
 
 
-					<textarea rows="20"  id="sparqlcode" placeholder="" style="width: 100%"></textarea>
+						<textarea rows="20" id="sparqlcode" placeholder=""
+							style="width: 100%">
+SELECT distinct ?p
+WHERE {
+ ?s ?p ?o.
+}
+					</textarea>
 
 
 					</div>
 
 
 				</div>
-				<div class="qonsole">
+				<div class="qonsole" id="result">
 					<div>查询结果</div>
 					<div class="col-md-12 well">
 
-						<table id="queryresultTable" class="queryTable">
-							
+
+						<table id="dataTable"
+							class="table table-striped table-list table-bordered"
+							width="100%">
+							    
+							<thead>
+								          
+								<tr id="colTr">          
+								</tr>
+								    
+							</thead>
+							    
+							<tbody id="colTb">      
+							</tbody>
+							 
 						</table>
+
+
+
+					
 
 
 					</div>

@@ -1,30 +1,30 @@
-.cmdtable{
-	height:250px;
-	width:100%;
+.cmdtable {
+	height: 250px;
+	width: 100%;
 }
 
-  a:hover{text-decoration: none;}     
-  .btn{     
-    display: inline-block;     
-    margin-top: 10px;     
-    padding: 10px 24px;     
-    border-radius: 4px;     
-    background-color: #428bca;     
-    color: #fff;     
-    cursor: pointer;  
-    margin-bottom:10px;   
-  }     
-  .btn:hover{     
-    background-color: #99c6ff;     
-  }     
-               
-  .bgbtn02 img{     
-    margin-bottom: 1px;     
-    margin-right: 10px;   
-    height:15px;  
-  }     
-  
-  .queryTable{
-  background-color:white;
-  margin-top:10px;
-  }
+#yunxing {
+	display: inline-block;
+	margin-top: 10px;
+	padding: 10px 24px;
+	border-radius: 4px;
+	background-color: #428bca;
+	color: #fff;
+	cursor: pointer;
+	margin-bottom: 10px;
+	outline:0 none !important;
+}
+
+#yunxing:hover {
+	background-color: #99c6ff;
+}
+
+#yunxing img {
+	margin-bottom: 1px;
+	margin-right: 10px;
+}
+
+.queryTable {
+	background-color: white;
+	margin-top: 10px;
+}
