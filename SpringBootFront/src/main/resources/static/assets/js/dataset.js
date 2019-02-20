@@ -1,6 +1,12 @@
 $(document).ready(function(){
 	var baseUrl="http://202.120.40.28:4460/data/query";
 
+	var editor=CodeMirror.fromTextArea(document.getElementById("sparqlcode"),{
+        mode:"application/sparql-query",   
+        lineNumbers:true
+});
+
+	
 	getCMD=function (){
 		var cmd=document.getElementById("myTextbox");
 		

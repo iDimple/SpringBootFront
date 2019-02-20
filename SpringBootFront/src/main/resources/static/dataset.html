@@ -13,11 +13,17 @@
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <link href="assets/css/yasr.min.css" rel="stylesheet">
 <link href="assets/css/yasqe.min.css" rel="stylesheet">
-<link href="assets/css/codemirror.min.css" rel="stylesheet">
+<link href="assets/css/codemirror.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/dataset.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap-table.min.css">
+
+ 
+
+<script type="text/javascript" src="assets/js/codemirror.js"></script>
+
+ <script type="text/javascript" src="assets/js/codemirrorsparql.js"></script>
 
 <script type="text/javascript" src="assets/js/bootstrap-table.min.js"></script>
 <script type="text/javascript"
@@ -64,14 +70,7 @@
 					<div class="col-md-12 well">
 
 
-						<textarea class="cmdtable">
-PREFIX rdf: <http://www.w3.org/2018/mycard-rdf/1.0#>
-SELECT  ?p ?o
-WHERE {
-  <http://www.se.org/#LanguageSoftwareSpecification/1> ?p ?o.
-}
-
-</textarea>
+					<textarea rows="20"  id="sparqlcode" placeholder="" style="width: 100%"></textarea>
 
 
 					</div>
