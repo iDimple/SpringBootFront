@@ -4,5 +4,5 @@ spring.profiles.active: dev
 spring:
     profiles: dev
 server:
-    port: 8099
+    port: 4603
 
