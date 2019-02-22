@@ -6,12 +6,18 @@
 <title>基于编程规范的问答系统</title>
 
 <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="assets/js/dictionary.js"></script>
+<script type="text/javascript" src="assets/js/util.js"></script>
+<script type="text/javascript" src="assets/js/word.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/word.css">
+<link rel="stylesheet" type="text/css" href="assets/css/kb.css">
+<link rel="stylesheet" type="text/css" href="assets/css/prism.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/prism.js"></script>
+<script type="text/javascript" src="assets/js/d3.min.js"></script>
+<script type="text/javascript" src="assets/js/kbdisplay.js"></script>
 </head>
 <body>
 
@@ -36,39 +42,20 @@
 			</div>
 			<div
 				class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div>
-					<div class="page-header fixed dictIndex">
+
+				<div class="page-header fixed dictIndex">
 
 
-						<h2>Annotation</h2>
-						<div class="box single">
-							<div class="left">Name:</div>
-							<div class="right">Annotation</div>
-						</div>
-						<div class="box">
-							<div class="left">Rule:</div>
-							<div class="right">Annotations applying to a class, method
-								or constructor appear immediately after the documentation block,
-								and each annotation is listed on a line of its own (that is, one
-								annotation per line). These line breaks do not constitute
-								line-wrapping, so the indentation level is not increased.</div>
-						</div>
-						<div class="box single">
-							<div class="left">Exception:</div>
-							<div class="right">A single parameterless annotation may
-								instead appear together with the first line of the signature</div>
-						</div>
-						<div class="box ">
-							<div class="left">OntologyType:</div>
-							<div class="right">SoftwareSpecification</div>
-						</div>
-						<div class="box single">
-							<div class="left">FatherName:</div>
-							<div class="right">Specific constructs</div>
-						</div>
-					</div>
+					<h2>Annotation</h2>
+
+
+
+					<div id="answer" style="margin: 10px"></div>
+
 
 				</div>
+
+
 			</div>
 		</div>
 </body>

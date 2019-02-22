@@ -6,8 +6,8 @@ $(document).ready(function(){
 		getASC();
 	
 	 getDetail=function(id){
-		alert(id);
-		window.open("word.html");
+		
+		window.open("word.html?id="+id);
 	}
 	 getCaptical=function(captical){
 		 var cap="A";
@@ -71,10 +71,10 @@ $(document).ready(function(){
 			success:function(result){
 		
 				results=result["results"]["bindings"]
-				console.log(results.length);
+			
 				
 				for(var i=3;i<results.length;i++){
-					console.log(results[i]["name"])
+					
 					if(i==3||i==13||i==20||i==53||i==58||i==67||i==77||i==92||i==94||i==104||i==105||i==130||i==135||i==150||i==159
 							||i==171||i==177||i==214||i==221||i==228||i==240){
 						$("#dictionaryArea").append(getCaptical(i));

@@ -1,0 +1,13 @@
+  {
+      "Name": "White Space",
+      "Rule": "Methods should be separated by three blank lines.",
+      "SoftwareSpecificationType": "typographic",
+      "Source": "http://www.se.org/#Document/http://geosoft.no/development/cppstyle.html",
+      "OntologyType": "SoftwareSpecification",
+      "id": "http://www.se.org/#LanguageSoftwareSpecification/83",
+      "FatherName": "Layout",
+      "Pros": "By making the space larger than space within a method, the methods will stand out within the class.",
+      "ProsExample": "    public static void main(String[] args) {\n        System.out.println('hello world');\n    }",
+      "Cons": "By making the space larger than space within a method, the methods will stand out within the class",
+      "ConsExample": "    public static void main(String[] args) {\n        System.out.println('hello world');\n    }"
+    }
