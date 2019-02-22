@@ -56,7 +56,7 @@ $(document).ready(function(){
 		 break;
 		 }
 		 var str="<div>"
-			+"<span class='captial'>"+cap+"</span>"+
+			+"<span class='captial target' id='"+cap+"'>"+cap+"</span>"+
 			"</div>";
 		 return str;
 	 }

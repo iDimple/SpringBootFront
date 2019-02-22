@@ -7,7 +7,7 @@
 
 .captial {
 	font-size: 30px;
-	background-color: yellow;
+	color: blue;
 }
 
 .left {
@@ -31,9 +31,13 @@
 }
 
 .fixplace{
-	margin-top:110px;
+	margin-top:90px;
 
 }
 .single{
 	background-color:lightgray;
+}
+.target{
+  padding-top: 150px;
+    margin-top: 150px;
 }
