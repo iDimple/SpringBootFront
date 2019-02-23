@@ -17,20 +17,20 @@ import net.sf.json.JSONObject;
 
 public class APIManager {
 
-	public static void main(String[] args) {
-		String baseUrl="http://202.120.40.28:4460/data/query";
-		Map<String,String> params=new HashMap<String,String>();
-params.put("query", "SELECT ?s ?p ?o WHERE {?s ?p ?o.}");
-		String result=APIManager.post(baseUrl,params);
-
-		if(result!=null){  
-			System.out.println(result);
-//			JSONObject obj=JSONObject.fromObject(result);      
-//			result=obj.getString("measures");//得到json格式字符串数组  
-//			JSONArray arr=JSONArray.fromObject(result);  
-		
-		} 
-	}
+//	public static void main(String[] args) {
+//		String baseUrl="http://202.120.40.28:4460/data/query";
+//		Map<String,String> params=new HashMap<String,String>();
+//params.put("query", "SELECT ?s ?p ?o WHERE {?s ?p ?o.}");
+//		String result=APIManager.post(baseUrl,params);
+//
+//		if(result!=null){  
+//			System.out.println(result);
+////			JSONObject obj=JSONObject.fromObject(result);      
+////			result=obj.getString("measures");//得到json格式字符串数组  
+////			JSONArray arr=JSONArray.fromObject(result);  
+//		
+//		} 
+//	}
 
 	/** 
 	 * get方法直接调用post方法 

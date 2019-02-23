@@ -1,4 +1,4 @@
-var address = "http://202.120.40.28:4462";
+
 var address = "http://202.120.40.28:4462";
 $(document).ready(function () {
     $("#searchA").attr("href", address + "/ordinary");
@@ -28,7 +28,7 @@ function displayEntity(entity) {
     var html = "";
 
     if ("Rule" in entity) {
-        html += "<H2>" + entity.Rule + "</H2>";
+        html += "<H3>" + entity.Rule + "</H3>";
     }
 
     if ("RuleExplanation" in entity) {
