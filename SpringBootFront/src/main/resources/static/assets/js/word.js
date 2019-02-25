@@ -1,10 +1,8 @@
 $(document).ready(function(){
 	var baseUrl="http://202.120.40.28:4460/data/query";
 	var afterUrl =  window.location.href;
-	console.log(afterUrl);
 	var afterEqual = afterUrl.split("?id=")[1];
 	afterEqual="<"+afterEqual+">";
-	console.log(afterEqual);
 
 
 
@@ -29,12 +27,15 @@ $(document).ready(function(){
 				for(var i=0;i<json["bindings"].length;i++){
 					var item=json["bindings"][i];
 					var predicate=item["p"]["value"].split("#")[1];
-					jsonFormat[predicate]=item["o"]["value"];
+					console.log(predicate);
 					if("Name"==predicate){
-						console.log(jsonFormat[predicate]);
-						$("#entityName").text(jsonFormat[predicate]);
+						$("#entityName").text(item["o"]["value"]);
 					}
+					
+					jsonFormat[predicate]=item["o"]["value"];
 				}
+				jsonFormat["Id"]=afterEqual;
+				console.log(jsonFormat);
 				displayEntity(jsonFormat);
 				Prism.highlightAll();
 			}          

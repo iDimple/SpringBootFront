@@ -1,9 +1,9 @@
-
 var address = "http://202.120.40.28:4462";
+var originAddress = "http://202.120.40.28:4461";
 $(document).ready(function () {
-    $("#searchA").attr("href", address + "/ordinary");
-    $("#advanceA").attr("href", address + "/advance");
-    $("#checkCodeA").attr("href", address + "/code");
+    $("#searchA").attr("href", originAddress + "/ordinary");
+    $("#advanceA").attr("href", originAddress + "/advance");
+    $("#checkCodeA").attr("href", originAddress + "/code");
 });
 
 function setCookie(cname, cvalue) {
@@ -28,7 +28,7 @@ function displayEntity(entity) {
     var html = "";
 
     if ("Rule" in entity) {
-        html += "<H3>" + entity.Rule + "</H3>";
+        html += "<H3>" + entity.Rule + "</H2>";
     }
 
     if ("RuleExplanation" in entity) {
