@@ -1,18 +1,13 @@
 $(document).ready(function(){
 	var baseUrl="http://202.120.40.28:4460/data/query";
-
+  
+	
 	var editor=CodeMirror.fromTextArea(document.getElementById("sparqlcode"),{
 		mode:"application/sparql-query",   
 		lineNumbers:true
 	});
 
-
-
-
-
-
-
-
+$("#queryResult").hide();
 
 
 	$("#yunxing").click(function(){
@@ -45,6 +40,7 @@ $(document).ready(function(){
 			data:	{"query":cmd},
 			success : function(resdata) {
 				$("#imgYX").attr("src","assets/img/yunxing.png");
+				$("#queryResult").show();
 				//请求成功后 如果存在datatable结构销毁
 				if(dataTable){
 			
@@ -92,24 +88,22 @@ $(document).ready(function(){
 					"bFilter": true,
 					"retrieve": true,
 					"processing": true,
-					"scrollX": true,
+					"scrollX": false,
 					"fixedColumns": true,
 					"bScrollAutoCss": true,
 					 "destroy": true,
 					"language": {
-						"search": "过滤：",
-						"lengthMenu": "每页 _MENU_ 条记录",
-						"loadingRecords": "请等待，数据正在加载中......",
-						"zeroRecords": "没有找到记录",
-						"info": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条，第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
-						"infoEmpty": "没有数据",
-						"infoFiltered": "(从 _MAX_ 条数据中检索)",
+						"search": "search:",
+						"loadingRecords": "loading......",
+						"zeroRecords": "No Records",
+						"info": "Showing  _START_ to  _END_ of _TOTAL_ entries",
+						"infoEmpty": "Find Nothing",
 						"oPaginate": {
-							"processing": "正在查询中...",
-							"sFirst": "首页",
-							"sPrevious": "前一页",
-							"sNext": "后一页",
-							"sLast": "尾页"
+							"processing": "searching...",
+							"sFirst": "First",
+							"sPrevious": "Previous",
+							"sNext": "Next",
+							"sLast": "Last"
 						}
 					},
 					data:tableDataArray,

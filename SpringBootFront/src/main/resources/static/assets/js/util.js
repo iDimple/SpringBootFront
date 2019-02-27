@@ -28,7 +28,8 @@ function displayEntity(entity) {
     var html = "";
 
     if ("Rule" in entity) {
-        html += "<H3>" + entity.Rule + "</H2>";
+    	html += "<I style='color: #000000'> " + "Rule" + "</I>";
+        html += "<div style='margin-bottom:10px;background-color:#EEDFCC'>" + entity.Rule + "</div>";
     }
 
     if ("RuleExplanation" in entity) {
