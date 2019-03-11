@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
+    height:100%;
 }
 
 /*
@@ -175,3 +176,5 @@ caption {
 .table_word:hover {
     cursor: pointer;
 }
+
+ .footer{height:100px;margin-top:-100px;}/* margin-top（负值的）高度等于footer的height值 */
