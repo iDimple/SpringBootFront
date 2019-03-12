@@ -1,19 +1,11 @@
-/*
- * Base structure
- */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    padding-top: 50px;
-    height:100%;
-}
 
 /*
  * Global add-ons
  */
 .sub-header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
 }
 
 /*
@@ -21,7 +13,7 @@ body {
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
-    border: 0;
+	border: 0;
 }
 
 /*
@@ -30,151 +22,174 @@ body {
 
 /* Hide for mobile, show later */
 .sidebar {
-    display: none;
+	display: none;
 }
 
 .subbrand {
-    display: none;
+	display: none;
 }
 
-@media ( min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 51px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 20px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
-        border-right: 1px solid #eee;
-    }
-
-    .navbar-form .form-control {
-        display: inline-block;
-        width: 130px;
-        vertical-align: middle;
-    }
-
-    .subbrand {
-        display: block;
-    }
-
-    .propager .glyphicon {
-        margin: 0px 15px;
-        text-decoration: none;
-    }
+@media ( min-width : 768px) {
+	.sidebar {
+		position: fixed;
+		top: 51px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		/* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+	}
+	.navbar-form .form-control {
+		display: inline-block;
+		width: 130px;
+		vertical-align: middle;
+	}
+	.subbrand {
+		display: block;
+	}
+	.propager .glyphicon {
+		margin: 0px 15px;
+		text-decoration: none;
+	}
 }
 
 }
 
 /* Sidebar navigation */
 .nav-sidebar {
-    margin-right: -21px; /* 20px padding + 1px border */
-    margin-bottom: 20px;
-    margin-left: -20px;
+	margin-right: -21px; /* 20px padding + 1px border */
+	margin-bottom: 20px;
+	margin-left: -20px;
 }
 
-.nav-sidebar > li > a {
-    padding-right: 20px;
-    padding-left: 20px;
+.nav-sidebar>li>a {
+	padding-right: 20px;
+	padding-left: 20px;
 }
 
-.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
-    color: #fff;
-    background-color: #428bca;
+.nav-sidebar>.active>a, .nav-sidebar>.active>a:hover, .nav-sidebar>.active>a:focus
+	{
+	color: #fff;
+	background-color: #428bca;
 }
 
 /*
  * Main content
  */
 .main {
-    padding: 20px;
+	padding: 20px;
 }
 
-@media ( min-width: 768px) {
-    .main {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
+@media ( min-width : 768px) {
+	.main {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
 }
 
 .main .page-header {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 /*
  * Placeholder dashboard ideas
  */
 .placeholders {
-    margin-bottom: 30px;
-    text-align: center;
+	margin-bottom: 30px;
+	text-align: center;
 }
 
 .placeholders h4 {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .placeholder {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .placeholder img {
-    display: inline-block;
-    border-radius: 50%;
+	display: inline-block;
+	border-radius: 50%;
 }
 
 /* Custom */
 .subbrand {
-    font-size: medium;
+	font-size: medium;
 }
 
 .table-inner {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 table, thead th {
-    text-align: center;
+	text-align: center;
 }
 
 caption {
-    text-align: center;
-    font-weight: bold;
-    color: black;
+	text-align: center;
+	font-weight: bold;
+	color: black;
 }
 
 .propager .glyphicon {
-    margin: 0px 5px;
-    text-decoration: none;
+	margin: 0px 5px;
+	text-decoration: none;
 }
 
 .propager .glyphicon:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .disabled {
-    color: gray !important;
+	color: gray !important;
 }
 
 .disabled:hover {
-    cursor: default !important;
+	cursor: default !important;
 }
 
 .panel-heading[data-toggle="collapse"]:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .sidebar-footer {
-    top: 250px;
-    padding-right: 20px;
-    position: relative;
+	top: 250px;
+	padding-right: 20px;
+	position: relative;
 }
 
 .table_word:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
- .footer{height:100px;margin-top:-100px;}/* margin-top（负值的）高度等于footer的height值 */
+html, body {
+	height: 100%;
+	margin: 0;
+	
+}
+body{
+	padding-top: 50px;
+}
+.mainContainer {
+	min-height: 100%;
+}
+
+
+
+.mainContent {
+	
+	padding-bottom: 50px;
+} /* main的padding-bottom值要等于或大于footer的height值 */
+.footer {
+	height: 50px;
+	margin-top: -50px;
+} /* margin-top（负值的）高度等于footer的height值 */
+
+.label-warning {
+    font-size:105%;
+}

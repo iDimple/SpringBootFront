@@ -10,51 +10,66 @@
 	href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-</head>	
+</head>
 <body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<span class="navbar-brand">Knowledge Base Platform for Coding Conventions</span>
-			</div>
-		</div>
-	</nav>
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">			
-					<li ><a href="index.html">Intelligent QA</a></li>
-					
-						<li ><a href="dataset.html">SPARQL Query</a></li>
-					
-					<li ><a href="dictionary.html">Entity Dictionary</a></li>
-					<li ><a href="download.html">Download</a></li>
-					<li class="active"><a href="introduction.html">About Us</a></li>
-				</ul>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="page-header">
-					<h1>About us</h1>
-					<div class="well">
-					We are members of the Big Data and Software Engineering Lab(BASE) , Shanghai Jiao Tong University, China.<br />
-					You can contact us by e-mail：{junmingcao, tjsoulshe, bjshen, li_wei, wuqinyue, ytchen}@sjtu.edu.cn<br />
-					<a href="http://202.120.40.28" target="_blank">Welcome to our homepage!</a>
-					</div>
-					<h1>About the program</h1>
-					<div class="well">
-					Coding conventions are a set of coding guidelines used by software developers to improve the readability of source code, increase software maintainability, and promote the reuse of coding patterns. Understanding coding conventions has become an indispensable discipline in software engineering. In this paper, we introduce CCBase, a knowledge base of coding conventions, that was constructed from online resources. Specifically, CCBase was constructed as follows. We designed the ontology of the coding convention domain, crawled data related to coding conventions from a variety of online resources, and then extracted entities and relations using an NLP-enabled rule matching method. To uncover the latent relations, we further proposed a similarity metric to reveal the similar-to and relate-to relations, and developed a RCE algorithm to establish a unified type hierarchy of coding conventions. The resulting knowledge base contains 3139 coding conventions for Java and C++, with 3758 entities and 767 relations. Furthermore, we have extended the usability of CCBase by developing a question answering system on the base. We have conducted experiments to evaluate CCBase. The experimental results show that CCBase has a wide coverage on entities and relations in coding conventions domain, and the QA system achieves an F1 score of 84.5% on 214 questions raised in StackOverflow.
-
-					
-					</div>
+	<div class="mainContainer">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<span class="navbar-brand">Knowledge Base Platform for
+						Coding Conventions</span>
 				</div>
 			</div>
-		
-	</div>
-	
-		<div align="center" class="footer">Copyright &copy; 2018-2019 Big Data and Software Engineering Lab SJTU
+		</nav>
+
+		<div class="container-fluid mainContent">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li><a href="index.html">Intelligent QA</a></li>
+
+						<li><a href="dataset.html">SPARQL Query</a></li>
+
+						<li><a href="dictionary.html">Entity Dictionary</a></li>
+						<li><a href="download.html">Download</a></li>
+						<li class="active"><a href="introduction.html">About Us</a></li>
+					</ul>
+				</div>
+				<div
+					class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<div class="page-header">
+						<h1>About us</h1>
+						<div class="well">
+							We are members of  <span class="label label-warning">the Big Data and Software Engineering Lab(BASE)</span> 
+							, Shanghai Jiao Tong University, China.<br /> You can contact us
+							by e-mail：{junmingcao, tjsoulshe, bjshen, li_wei, wuqinyue,
+							ytchen}@sjtu.edu.cn<br /> <a href="http://202.120.40.28"
+								target="_blank">Welcome to our homepage!</a>
+						</div>
+						<h1>About the platform</h1>
+						<div class="well ">Coding conventions are a set of coding
+							guidelines used by software developers to improve the readability
+							of source code, increase software maintainability, and promote
+							the reuse of coding patterns. Understanding coding conventions
+							has become an indispensable discipline in software engineering.
+							We developed <span class="label label-warning">CCBase</span>, a knowledge base of coding
+							conventions, that was constructed from online resources.
+							CCBase contains <span class="label label-warning">3139</span> coding conventions for Java and C++,
+							with <span class="label label-warning">3758</span> entities and <span class="label label-warning">767</span> relations. Furthermore, we have
+							extended the usability of CCBase by developing a question
+							answering system on the base. We have conducted experiments to
+							evaluate CCBase. The experimental results show that CCBase has a
+							wide coverage on entities and relations in coding conventions
+							domain, and the QA system achieves an F1 score of <span class="label label-warning">84.5%</span> on <span class="label label-warning">214</span>
+							questions raised in StackOverflow.</div>
+					</div>
+				</div>
+
 			</div>
-	
+		</div>
+	</div>
+	<div align="center" class="footer">Copyright &copy; 2018-2019 Big
+		Data and Software Engineering Lab,SJTU</div>
+
 </body>
 </html>
