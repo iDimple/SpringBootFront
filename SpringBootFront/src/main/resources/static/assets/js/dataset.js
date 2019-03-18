@@ -88,7 +88,7 @@ $("#queryResult").hide();
 					"bFilter": true,
 					"retrieve": true,
 					"processing": true,
-					"scrollX": false,
+					"scrollX": true,
 					"fixedColumns": true,
 					"bScrollAutoCss": true,
 					 "destroy": true,

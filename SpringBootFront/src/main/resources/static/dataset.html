@@ -70,7 +70,14 @@
 
 				<div
 					class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
+<div style="display: flex;justify-content: flex-front;">
+    <div style="margin: 3px">
+    You can use SPARQL to query CCBase. If you don't know how to use SPARQL, please click here to <a target="_blank"  href="https://www.w3.org/TR/sparql11-query/">learn more about SPARQL.</a>
+    <br />For example,
+       if you want to know all our entities' names, just click the 'Run' button and you will see them.
+      
+    </div>
+</div>
 
 					<Button id="yunxing">
 						<img src="assets/img/yunxing.png" width="20" height="20"
@@ -83,9 +90,10 @@
 
 							<textarea rows="20" id="sparqlcode" placeholder=""
 								style="width: 100%">
-SELECT distinct ?s ?p ?o
+PREFIX rdf:<http://www.w3.org/2018/mycard-rdf/1.0#>
+SELECT distinct ?s  ?name
 WHERE {
- ?s ?p ?o.
+ ?s rdf:Name ?name.
 }
 					</textarea>
 
