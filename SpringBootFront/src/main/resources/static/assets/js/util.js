@@ -1,5 +1,5 @@
 var address = "http://202.120.40.28:4461";
-var originAddress = "http://202.120.40.28:4461";
+var originAddress = "http://202.120.40.28:4462";
 $(document).ready(function () {
     $("#searchA").attr("href", originAddress + "/ordinary");
     $("#advanceA").attr("href", originAddress + "/advance");
