@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<title>Knowledge Base Platform for Coding Conventions</title>
+
+<script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="qa.js"></script>
+ <script src="util.js"></script>
+    <script src="search.js"></script>
+    <script src="prism.js"></script>
+    <script src="d3.min.js"></script>
+    <script src="kbdisplay.js"></script>
+    <link href="kb.css" rel="stylesheet" type="text/css"/>
+    <link href="prism.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div class="mainContainer">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<span class="navbar-brand">Knowledge Base Platform for
+						Coding Conventions</span>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid mainContent">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li class="active"><a href="index.html">Intelligent QA</a></li>
+
+						<li><a href="dataset.html">SPARQL Query</a></li>
+
+						<li><a href="dictionary.html">Entity Dictionary</a></li>
+						<li><a href="download.html">Download</a></li>
+						<li><a href="introduction.html">About Us</a></li>
+					</ul>
+				</div>
+				<div
+					class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<div class="qaborder">
+						<div class="qaleft">
+
+							<div id="st-message-box" tabindex="5000"
+								style="overflow: auto; outline: none; height: 499px; overflow-x:hidden;">
+								<div class="st-message-wrap answer">
+									<div class="st-message-icon"></div>
+									<div class="st-message-r"></div>
+									<div class="st-message">
+										<div class="st-outline">Hello! You can ask me questions
+											about code conventions. I'll try my best to answer you~.</div>
+									</div>
+								</div>
+								
+								<div id="answer" class="st-message-wrap answer"></div>
+							</div>
+							<div class="conversation_import">
+								<textarea class="chat_input" id="chat_input"
+									placeholder="ask something~"></textarea>
+
+
+								<div class="conversation_btn clearfix">
+
+									<button type="button" id="st-input-btn">enter</button>
+								</div>
+							</div>
+						</div>
+						<div class="qaright">
+							<div
+								style="margin: 15px; font-size: 20px; margin: 15px; color: rgb(121, 121, 121);">
+								Our system can answer 2 types of questions.<br /> 1) If you do
+								not know the names of coding conventions, you can find them
+								based on their attributes.
+								<div style="margin-left: 16px;">Example: What should I do
+									if the conditional expressions are too complex?</div>
+								2) You can find the properties of specific coding conventions. <br />
+								<div style="margin-left: 16px;">Example: What is the
+									benefit to declare variables in the smallest scope possible?</div>
+							</div>
+						</div>
+					</div>
+					<div style="height: 100px"></div>
+				</div>
+			</div>
+		</div>
+		<div align="center" class="footer">Copyright &copy; 2018-2019
+			Big Data and Software Engineering Lab,SJTU</div>
+</body>
+
+</html>
