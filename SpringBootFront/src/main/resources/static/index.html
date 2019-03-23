@@ -11,7 +11,14 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 
-
+<script type="text/javascript" src="qa.js"></script>
+ <script src="util.js"></script>
+    <script src="search.js"></script>
+    <script src="prism.js"></script>
+    <script src="d3.min.js"></script>
+    <script src="kbdisplay.js"></script>
+    <link href="kb.css" rel="stylesheet" type="text/css"/>
+    <link href="prism.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<div class="mainContainer">
@@ -29,7 +36,7 @@
 				<div class="col-sm-3 col-md-2 sidebar">
 					<ul class="nav nav-sidebar">
 						<li class="active"><a href="index.html">Intelligent QA</a></li>
-
+<li ><a href="search.html">Search</a></li>
 						<li><a href="dataset.html">SPARQL Query</a></li>
 
 						<li><a href="dictionary.html">Entity Dictionary</a></li>
@@ -39,41 +46,53 @@
 				</div>
 				<div
 					class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<div class="page-header">
+					<div class="qaborder">
+						<div class="qaleft">
 
-						
-						<iframe id="J_Content"
-							src="ordinary.html" id="other"
-							frameborder="0" scrolling="no" style="border: 0px;" width="100%"
-							height="600px"> </iframe>
+							<div id="st-message-box" tabindex="5000"
+								style="overflow: auto; outline: none; height: 499px; overflow-x:hidden;">
+								<div class="st-message-wrap answer">
+									<div class="st-message-icon"></div>
+									<div class="st-message-r"></div>
+									<div class="st-message">
+										<div class="st-outline">Hello! You can ask me questions
+											about code conventions. I'll try my best to answer you~.</div>
+									</div>
+								</div>
+								
+								<div id="answer" class="st-message-wrap answer"></div>
+							</div>
+							<div class="conversation_import">
+								<textarea class="chat_input" id="chat_input"
+									placeholder="ask something~"></textarea>
+
+
+								<div class="conversation_btn clearfix">
+
+									<button type="button" id="st-input-btn">enter</button>
+								</div>
+							</div>
+						</div>
+						<div class="qaright">
+							<div
+								style="margin: 15px; font-size: 20px; margin: 15px; color: rgb(121, 121, 121);">
+								Our system can answer 2 types of questions.<br /> 1) If you do
+								not know the names of coding conventions, you can find them
+								based on their attributes.
+								<div style="margin-left: 16px;">Example: What should I do
+									if the conditional expressions are too complex?</div>
+								2) You can find the properties of specific coding conventions. <br />
+								<div style="margin-left: 16px;">Example: What is the
+									benefit to declare variables in the smallest scope possible?</div>
+							</div>
+						</div>
 					</div>
+					<div style="height: 100px"></div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div align="center" class="footer">Copyright &copy; 2018-2019 Big
-		Data and Software Engineering Lab,SJTU</div>
+		<div align="center" class="footer">Copyright &copy; 2018-2019
+			Big Data and Software Engineering Lab,SJTU</div>
 </body>
-<script type="text/javascript">
-var iObj = document.getElementById('J_Content');
-//消息处理函数
-var onmessage = function(e){
-    var data = e.data;
-    //提取参数
-    var height = /%([0-9]+)%/.exec(data)[1];
-    if(height == 0){
-        parent.parent.document.getElementById("J_ContentWrap").style.display = "none";
-    }
-    else{
-        iObj.height = height;
-    }
-}
-//监听postMessage消息事件
-if (typeof window.addEventListener != 'undefined') {
-    window.addEventListener('message', onmessage, false);
-} else if (typeof window.attachEvent != 'undefined') {
-    window.attachEvent('onmessage', onmessage);
-}
 
-</script>
 </html>

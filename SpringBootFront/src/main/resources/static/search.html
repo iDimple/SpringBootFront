@@ -6,12 +6,12 @@
 <title>Knowledge Base Platform for Coding Conventions</title>
 
 <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="assets/js/dictionary.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/dictionary.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 	<div class="mainContainer">
@@ -28,38 +28,25 @@
 			<div class="row">
 				<div class="col-sm-3 col-md-2 sidebar">
 					<ul class="nav nav-sidebar">
-						<li><a href="index.html">Intelligent QA</a></li>
-<li ><a href="search.html">Search</a></li>
+						<li ><a href="index.html">Intelligent QA</a></li>
+<li class="active"><a href="search.html">Search</a></li>
 						<li><a href="dataset.html">SPARQL Query</a></li>
 
-						<li class="active"><a href="dictionary.html">Entity
-								Dictionary</a></li>
+						<li><a href="dictionary.html">Entity Dictionary</a></li>
 						<li><a href="download.html">Download</a></li>
 						<li><a href="introduction.html">About Us</a></li>
 					</ul>
 				</div>
 				<div
 					class="col-xs-12 col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<div>
-						<div class="page-header fixed dictIndex" style="border-bottom: 0;">
+					<div class="page-header">
 
-
-							<h2>Entity Dictionary for Coding Conventions</h2>
-							<div class="text-muted ">
-								<a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a
-									href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a
-									href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a
-									href="#J">J</a> <a href="#L">L</a> <a href="#M">M</a> <a
-									href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a
-									href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a
-									href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a>
-							</div>
-
-
-						</div>
+						
+						<iframe id="J_Content"
+							src="ordinary.html" id="other"
+							frameborder="0" scrolling="no" style="border: 0px;" width="100%"
+							height="600px"> </iframe>
 					</div>
-
-					<div class="text-muted fixplace" id="dictionaryArea"></div>
 				</div>
 			</div>
 		</div>
@@ -67,4 +54,26 @@
 	<div align="center" class="footer">Copyright &copy; 2018-2019 Big
 		Data and Software Engineering Lab,SJTU</div>
 </body>
+<script type="text/javascript">
+var iObj = document.getElementById('J_Content');
+//消息处理函数
+var onmessage = function(e){
+    var data = e.data;
+    //提取参数
+    var height = /%([0-9]+)%/.exec(data)[1];
+    if(height == 0){
+        parent.parent.document.getElementById("J_ContentWrap").style.display = "none";
+    }
+    else{
+        iObj.height = height;
+    }
+}
+//监听postMessage消息事件
+if (typeof window.addEventListener != 'undefined') {
+    window.addEventListener('message', onmessage, false);
+} else if (typeof window.attachEvent != 'undefined') {
+    window.attachEvent('onmessage', onmessage);
+}
+
+</script>
 </html>
