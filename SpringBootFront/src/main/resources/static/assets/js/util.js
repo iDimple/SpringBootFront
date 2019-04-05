@@ -104,7 +104,7 @@ function buildD3(id, entityId) {
         success: function (result) {
             if (!$.isEmptyObject(result.data)) {
                 var d3id = getD3Id();
-                $("#" + entityId).append("<div id='" + d3id + "'></div>");
+                $("#" + entityId).append("<div style='position:relative' id='" + d3id + "'></div>");
                 new KB(result.data, d3id);
             }
         },

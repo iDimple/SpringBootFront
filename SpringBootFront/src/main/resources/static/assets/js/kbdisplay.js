@@ -1,3 +1,4 @@
+
 function KB(nodes, d3id) {
     this.nodes = nodes;
     var edges = new Array();
@@ -87,9 +88,9 @@ function KB(nodes, d3id) {
             return tooltip.style("visibility", "visible");
         })
         .on("mousemove", function () {
-            console.log(this)
-            return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-            // return tooltip.style("top", (this.x - 10) + "px").style("left", (this.y + 10) + "px");
+     
+            return tooltip.style("top", (d3.event.offsetY ) + "px").style("left", (d3.event.offsetY ) + "px");
+     
         })
         .on("mouseout", function (d, i) {
             svg.selectAll("#" + d3id + i + "name").style("visibility", "visible");
@@ -130,6 +131,13 @@ function KB(nodes, d3id) {
             },
             'id': function (d, i) {
                 if (d.target.type === "2") {
+                    return d3id + "otherEntityLine"+i;
+                } else if (d.target.type === "3") {
+                    return d3id + "propertyLine"+i;
+                }
+            },
+            'class':function (d, i) {
+                if (d.target.type === "2") {
                     return d3id + "otherEntityLine";
                 } else if (d.target.type === "3") {
                     return d3id + "propertyLine";
@@ -165,7 +173,12 @@ function KB(nodes, d3id) {
 
     svg_text.append('textPath')
         .attr('xlink:href', function (d, i) {
-            return '#edgepath' + d3id + i
+            // return '#edgepath' + d3id + i
+            if (d.target.type === "2") {
+                return "#"+d3id + "otherEntityLine"+i;
+            } else if (d.target.type === "3") {
+                return "#"+d3id + "propertyLine"+i;
+            }
         })
         .style("pointer-events", "none")
         .text(function (d) {
@@ -217,21 +230,21 @@ function KB(nodes, d3id) {
             if (flag === 1) {
                 flag = 0;
                 d3.selectAll("#" + d3id + "otherEntity").style("visibility", "hidden");
-                d3.selectAll("#" + d3id + "otherEntityLine").style("visibility", "hidden");
+                d3.selectAll("." + d3id + "otherEntityLine").style("visibility", "hidden");
                 d3.selectAll("#" + d3id + "otherEntityLineText").style("visibility", "hidden");
                 d3.selectAll("." + d3id + "otherEntityName").style("visibility", "hidden");
                 d3.selectAll("#" + d3id + "property").style("visibility", "visible");
-                d3.selectAll("#" + d3id + "propertyLine").style("visibility", "visible");
+                d3.selectAll("." + d3id + "propertyLine").style("visibility", "visible");
                 d3.selectAll("#" + d3id + "propertyLineText").style("visibility", "visible");
                 d3.selectAll("." + d3id + "propertyName").style("visibility", "visible");
             } else {
                 flag = 1;
                 d3.selectAll("#" + d3id + "otherEntity").style("visibility", "visible");
-                d3.selectAll("#" + d3id + "otherEntityLine").style("visibility", "visible");
+                d3.selectAll("." + d3id + "otherEntityLine").style("visibility", "visible");
                 d3.selectAll("#" + d3id + "otherEntityLineText").style("visibility", "visible");
                 d3.selectAll("." + d3id + "otherEntityName").style("visibility", "visible");
                 d3.selectAll("#" + d3id + "property").style("visibility", "hidden");
-                d3.selectAll("#" + d3id + "propertyLine").style("visibility", "hidden");
+                d3.selectAll("." + d3id + "propertyLine").style("visibility", "hidden");
                 d3.selectAll("#" + d3id + "propertyLineText").style("visibility", "hidden");
                 d3.selectAll("." + d3id + "propertyName").style("visibility", "hidden");
             }
@@ -300,6 +313,7 @@ function KB(nodes, d3id) {
             .text(function (d, i) {
                 return legendInfo[i].name;
             });
-        console.log(legend);
+//        console.log(legend);
     }
 }
+

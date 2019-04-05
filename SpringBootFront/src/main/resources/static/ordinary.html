@@ -14,7 +14,7 @@
     <script src="kbdisplay.js"></script>
     <link href="kb.css" rel="stylesheet" type="text/css"/>
     <link href="prism.css" rel="stylesheet" type="text/css"/>
-
+<script src="advancesearch.js"></script>
 
     <!--<script src="../META-INF/resources/search.js"></script>-->
     <!--<script src="../META-INF/resources/prism.js"></script>-->
@@ -23,25 +23,54 @@
 
 </head>
 <body>
-<div style="display: flex;justify-content: flex-end;">
-    <div style="margin: 3px">
-        <a id="advanceA" style="padding: 10px">Advanced search</a>
-        <a id="checkCodeA" style="padding: 10px">Check code</a>
-    </div>
-</div>
-<div style="margin:15px;">Our system can answer 2 types of questions.<br />
-1) If you do not know the names of coding conventions, you can find them based on their attributes. 
-<div style="margin-left:16px;">Example:
-What should I do if the conditional expressions are too complex?</div>
-2) You can find the properties of specific coding conventions. <br />
-<div style="margin-left:16px;">Example:
-What is the  benefit to declare variables in the smallest scope possible?</div>
 
-</div>
-<div id="header" style="display:flex;flex-direction:row; margin: 5px">
-    <input type="text" id="query" placeholder="what is source file structure of a java file?" style="flex-grow:1;"/>
-    <input type="submit" value="search" id="ordinarysearch" class="enterButton"/>
-</div>
+
+<div style="margin: 5px">
+		Here are some fields that can help you find the code conventions more
+		easily.<div > For example, if you want to know more about a code
+		convention <b>named 'layout'</b> whose <b>benefit</b> is <b>'make it
+			obvious for the reader'</b>. <br /> Just fill in the <b>name</b> field
+		with <b>'layout'</b>,and fill in the <b>benefit</b> field with <b>'make
+			it obvious for the reader'</b> Then click the button below. you'll get the
+		answer.</div>
+Here is another example.Fill in the <b>name</b> field
+		with <b>'comment'</b>,and fill in the <b>rule</b> field with <b>'short comments'</b>, then you'll know something about short comments.  
+	</div>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>name:</td>
+				<td><input style="width: 100%; border: 0" type="text"
+					placeholder="input name of that CCOS" id="name" value="layout" /></td>
+			</tr>
+			<tr>
+				<td>rule:</td>
+				<td><input style="width: 100%; border: 0" type="text"
+					placeholder="input brief description of CCOS" id="rule" /></td>
+			</tr>
+			<tr>
+				<td>benefit:</td>
+				<td><input style="width: 100%; border: 0" type="text"
+					placeholder="input benefits that you would gain if you adopt CCOS"
+					id="benefit" value="make it obvious for the reader" /></td>
+			</tr>
+			<tr>
+				<td>weakness:</td>
+				<td><input style="width: 100%; border: 0" type="text"
+					placeholder="input pains that you  would suffer if you adopt that CCOS"
+					id="weakness" /></td>
+			</tr>
+			<tr>
+				<td>exception:</td>
+				<td><input style="width: 100%; border: 0" type="text"
+					placeholder="input the situation that you should or should not adopt CCOS"
+					id="exception" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<div style="display: flex; justify-content: flex-end;">
+		<button id="advancesearch"  class="enterButton">advanced search</button>
+	</div>
 
 <div id="answer" style="margin: 10px">
 

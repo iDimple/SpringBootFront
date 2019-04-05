@@ -91,8 +91,9 @@ function KB(nodes, d3id) {
         })
         .on("mousemove", function () {
 //            console.log(this)
-            return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-            // return tooltip.style("top", (this.x - 10) + "px").style("left", (this.y + 10) + "px");
+            return tooltip.style("top", (d3.event.offsetY ) + "px").style("left", (d3.event.offsetY ) + "px");
+
+           // return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
         })
         .on("mouseout", function (d, i) {
             svg.selectAll("#" + d3id + i + "name").style("visibility", "visible");
