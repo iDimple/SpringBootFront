@@ -190,7 +190,7 @@ body {
 }
 
 .qaborder {
-	width: 1110px;
+	width: 1100px;
 	height: 600px;
 	position: relative;
 	border: 1px solid #CACACA;
@@ -211,7 +211,7 @@ body {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	width: 410px;
+	width: 400px;
 	background-color: #FFF;
 }
 
