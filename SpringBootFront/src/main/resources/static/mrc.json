@@ -1,0 +1,14 @@
+{"data":[
+{"answer_end":269,"answer_start":24,
+"context":"goto should not be used.Goto statements violate the idea of structured code. Only in some very few cases (for instance breaking out of deeply nested structures) should goto be considered, and only if the alternative structured counterpart is proven to be less readable."
+,"entity":[{
+"CodeConventionType":"typographic",
+"Id":"http://www.semanticweb.org/CCBase/#CodeConvention/67",
+"Name":"Layout",
+"Pros":"The chosen approach is considered better in the way that each part of the if-else statement is written on separate lines of the file. This should make it easier to manipulate the statement, for instance when moving else clauses around.",
+"ProsCluster":"http://www.semanticweb.org/CCBase/#CodeConvention/67/prosCluster/0",
+"ProsExample":"if (condition) {\n  statements;\n}\n\nif (condition) {\n  statements;\n}\nelse {\n   statements;\n}\n\nif (condition) {\n  statements;\n}\nelse if (condition) {\n  statements;\n}\nelse {\n  statements;\n}",
+"Rule":"The if-else class of statements should have the following form:\n"}]
+}
+],
+"status":"success"}
