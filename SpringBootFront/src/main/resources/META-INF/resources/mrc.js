@@ -32,18 +32,19 @@ $(document).ready(function () {
 				+query+'</div></div></div>');
 
 
-		var question = {"question": 'what are the effects of using "goto"?'};
+		var question = {"question": query};
 		console.log(query);
 		$.ajax({
 //			type: 'POST',
 //			url: address + "/template",
 			type: 'GET',
-			url:  "mrc.json",
+			url:  "document.json",
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			data: JSON.stringify(question),
 			success: function (result) {
 				console.log(result);
+				result=result[query];
 				if (result.status === "success") {
 					var json = result.data;
 					if ($.isEmptyObject(json) || json === []) {

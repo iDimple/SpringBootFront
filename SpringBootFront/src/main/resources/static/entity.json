@@ -1,0 +1,242 @@
+﻿{
+    "http://www.semanticweb.org/CCBase/#CodeConvention/54": {
+        "data": [
+            {
+                "name": "control structure",
+                "relation": "CodeConventionType",
+                "type": "3"
+            },
+            {
+                "name": "Conditionals",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "By assigning boolean variables to expressions, the program gets automatic documentation. The construction will be easier to read, debug and maintain.",
+                "relation": "Pros",
+                "type": "3"
+            },
+            {
+                "name": "Complex conditional expressions must be avoided. Introduce temporary boolean variables instead .",
+                "relation": null,
+                "type": "1"
+            },
+            {
+                "name": "if ((elementNo < 0) || (elementNo > maxElement)||\n     elementNo == lastElement) {\n  :\n}",
+                "relation": "BadExample",
+                "type": "3"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/386": {
+        "data": [
+            {
+                "name": "// please refer to the pseudo-code as follows \nboolean existed = (file.open(fileName, \"w\") != null) && (...) || (...);\nif (existed) {\n    ...\n}  ",
+                "relation": "ProsExample",
+                "type": "3"
+            },
+            {
+                "name": "Do not use complicated statements in conditional statements (except for frequently used methods like getXxx/isXxx). Use boolean variables to store results of complicated statements temporarily will increase the code’s readability.",
+                "relation": null,
+                "type": "1"
+            },
+            {
+                "name": "if ((file.open(fileName, \"w\") != null) && (...) || (...)) {\n    ...\n}",
+                "relation": "ConsExample",
+                "type": "3"
+            },
+            {
+                "name": "Logic within many if statements are very complicated. Readers need to analyze the final results of the conditional expression to decide what statement will be executed in certain conditions.",
+                "relation": "RuleExplanation",
+                "type": "3"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/22": {
+        "data": [
+            {
+                "name": "Specific Naming Conventions",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "Using the is prefix solves a common problem of choosing bad boolean names like status or flag. isStatus or isFlag simply doesn't fit, and the programmer is forced to choose more meaningful names.",
+                "relation": "Pros",
+                "type": "3"
+            },
+            {
+                "name": " The prefix is should be used for boolean variables and methods.",
+                "relation": null,
+                "type": "1"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/299": {
+        "data": [
+            {
+                "name": "Do not add ‘is’ as prefix while defining Boolean variable, since it may cause a serialization exception in some Java frameworks.",
+                "relation": null,
+                "type": "1"
+            },
+            {
+                "name": "boolean isSuccess; The method name will be isSuccess() and then RPC framework will deduce the variable name as ‘success’, resulting in a serialization error since it cannot find the correct attribute.",
+                "relation": "BadExample",
+                "type": "3"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/26": {
+        "data": [
+            {
+                "name": "Specific Naming Conventions",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "Negated boolean variable names must be avoided.The problem arises when such a name is used in conjunction with the logical negation operator as this results in a double negative. It is not immediately apparent what !isNotFound means.",
+                "relation": null,
+                "type": "1"
+            },
+            {
+                "name": "isNoError",
+                "relation": "BadExample",
+                "type": "3"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/255": {
+        "data": [
+            {
+                "name": "BooleanGetMethodName",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "public boolean isFoo();             // ok",
+                "relation": "ProsExample",
+                "type": "3"
+            },
+            {
+                "name": "Methods that return boolean results should be named as predicate statements to denote this.  \nAvoid the use of the ‘get’ prefix for these methods.",
+                "relation": null,
+                "type": "1"
+            },
+            {
+                "name": "public boolean getFoo();            // bad",
+                "relation": "BadExample",
+                "type": "3"
+            },
+            {
+                "name": "I.e, ‘isReady()’, ‘hasValues()’, ‘canCommit()’, ‘willFail()’, etc. ",
+                "relation": "RuleExplanation",
+                "type": "3"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/48": {
+        "data": [
+            {
+                "name": "Variables",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "It is easier to control the effects and side effects of the variable.",
+                "relation": "Pros",
+                "type": "3"
+            },
+            {
+                "name": "Variables should be declared in the smallest scope possible.",
+                "relation": null,
+                "type": "1"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/196": {
+        "data": [
+            {
+                "name": "Comments should not be enclosed in large boxes drawn with asterisks or other characters. Comments should never include special characters such as form-feed and backspace.",
+                "relation": null,
+                "type": "1"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/201": {
+        "data": [
+            {
+                "name": "Trailing Comments",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "if (a == 2) {\n    return TRUE;            /* special case */\n} else {\n    return isprime(a);      /* works only for odd a */\n}",
+                "relation": "ProsExample",
+                "type": "3"
+            },
+            {
+                "name": "Very short comments can appear on the same line as the code they describe, but should be shifted far enough to separate them from the statements. If more than one short comment appears in a chunk of code, they should all be indented to the same tab setting. Avoid the assembly language style of commenting every line of executable code with a trailing comment.",
+                "relation": null,
+                "type": "1"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/90": {
+        "data": [
+            {
+                "name": "Comments",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "Comments should be included relative to their position in the code",
+                "relation": null,
+                "type": "1"
+            },
+            {
+                "name": "while (true) { \n// Do something\n    something();\n}",
+                "relation": "BadExample",
+                "type": "3"
+            },
+            {
+                "name": "Code Complete, Steve McConnell - Microsoft Press",
+                "relation": "Resource",
+                "type": "3"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/89": {
+        "data": [
+            {
+                "name": "Comments",
+                "relation": "Name",
+                "type": "3"
+            },
+            {
+                "name": "There should be a space between the \"//\" and the actual comment, and comments should always start with an upper case letter and end with a period.",
+                "relation": null,
+                "type": "1"
+            }
+        ],
+        "status": "success"
+    },
+    "http://www.semanticweb.org/CCBase/#CodeConvention/198": {
+        "data": [
+            {
+                "name": "A block comment should be preceded by a blank line to set it apart from the rest of the code. Block comments have an asterisk \"*\" at the beginning of each line except the first.",
+                "relation": null,
+                "type": "1"
+            }
+        ],
+        "status": "success"
+    }
+}
