@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "answer_end": 94,
+      "answer_start": 0,
+      "context": "Complex conditional expressions must be avoided. Introduce temporary boolean variables instead.By assigning boolean variables to expressions, the program gets automatic documentation. The construction will be easier to read, debug and maintain.",
+      "entity": [
+        {"Id":"http://www.semanticweb.org/CCBase/#CodeConvention/54",
+          "CodeConventionType": "control structure",
+          "Name": "Conditionals",
+          "Pros": "By assigning boolean variables to expressions, the program gets automatic documentation. The construction will be easier to read, debug and maintain.",
+          "Rule": "Complex conditional expressions must be avoided. Introduce temporary boolean variables instead.",
+          "BadExample": "if ((elementNo < 0) || (elementNo > maxElement)|| elementNo == lastElement) { : }"
+        }
+      ]
+    }
+  ],
+  "status": "success"
+}
