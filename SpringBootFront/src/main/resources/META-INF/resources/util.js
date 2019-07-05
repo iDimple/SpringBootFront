@@ -99,16 +99,16 @@ function displayEntity(entity) {
 function buildD3(id, entityId) {
     var question = {"url": id};
     $.ajax({
-//        type: 'POST',
-//        url: address + "/similar",
-    	type:'GET',
-    	url:"entity.json",
+        type: 'POST',
+        url: address + "/similar",
+//    	type:'GET',
+//    	url:"entity.json",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify(question),
         // contentType:"application/x-www-form-urlencoded",
         success: function (result) {
-        	result=result[id];
+//        	result=result[id];
             if (!$.isEmptyObject(result.data)) {
                 var d3id = getD3Id();
                 $("#" + entityId).append("<div style='position:relative' id='" + d3id + "'></div>");
