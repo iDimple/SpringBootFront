@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 							}
 							showContext+=context[i];
-							if(i==(dataJson.answer_end)){
+							if(i==(dataJson.answer_end-1)){
 								showContext+="<img src='assets/img/unfold.png' alt='more details' title='more details' id='entitydetail"+indexOfClick+"'></img>";
 								showContext+='</a>';
 								console.log(i)
