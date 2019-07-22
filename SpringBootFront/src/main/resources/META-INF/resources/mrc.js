@@ -101,7 +101,10 @@ $(document).ready(function () {
 //					$("#st-message-box").scrollTop(he);
 //					}
 				} else {
-					$("#answer").append("<p>" + result.error_msg + "</p>");
+//					$("#answer").append("<p>" + result.error_msg + "</p>");
+					$("#answer").append('<div class="st-message-wrap answer"><div class="st-message-icon"></div><div class="st-message-r"></div><div class="st-message"><div class="st-outline">'
+							+"Sorry, I don't know~");
+					$("#answer").append('</div></div></div><div style="height:150px"></div>');	
 				}
 
 			},

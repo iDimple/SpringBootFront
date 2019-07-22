@@ -190,7 +190,7 @@ body {
 }
 
 .qaborder {
-	width: 1100px;
+	width: 1020px;
 	height: 600px;
 	position: relative;
 	border: 1px solid #CACACA;
@@ -201,7 +201,7 @@ body {
 	top: 0;
 	bottom: 0;
 	left: 0;
-	width: 700px;
+	width: 660px;
 	z-index: 2;
 	border-right: 1px solid #CACACA;
 }
@@ -211,7 +211,7 @@ body {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	width: 400px;
+	width: 360px;
 	background-color: #FFF;
 }
 
@@ -248,6 +248,7 @@ body {
 }
 .answer .st-outline {
     float: left;
+    word-break:break-word;
 }
 .st-outline {
 	line-height: 22px;

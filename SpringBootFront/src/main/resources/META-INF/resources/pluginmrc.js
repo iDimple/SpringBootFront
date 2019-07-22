@@ -35,16 +35,16 @@ $(document).ready(function () {
 		var question = {"question": query};
 		console.log(query);
 		$.ajax({
-//			type: 'POST',
-//			url: address + "/template",
-			type: 'GET',
-			url:  "document.json",
+			type: 'POST',
+			url: address + "/template",
+//			type: 'GET',
+//			url:  "document.json",
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			data: JSON.stringify(question),
 			success: function (result) {
-				console.log(result);
-				result=result[query];
+//				console.log(result);
+//				result=result[query];
 				if (result.status === "success") {
 					var json = result.data;
 					if ($.isEmptyObject(json) || json === []) {
@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 							}
 							showContext+=context[i];
-							if(i==(dataJson.answer_end)){
+							if(i==(dataJson.answer_end-1)){
 								showContext+="<img src='assets/img/fold.png' alt='more details' title='more details' id='entitydetail"+indexOfClick+"'></img>";
 								showContext+='</a>';
 								console.log(i)
@@ -101,7 +101,10 @@ $(document).ready(function () {
 //					$("#st-message-box").scrollTop(he);
 //					}
 				} else {
-					$("#answer").append("<p>" + result.error_msg + "</p>");
+//					$("#answer").append("<p>" + result.error_msg + "</p>");
+					$("#answer").append('<div class="st-message-wrap answer"><div class="st-message-icon"></div><div class="st-message-r"></div><div class="st-message"><div class="st-outline">'
+							+"Sorry, I don't know~");
+					$("#answer").append('</div></div></div><div style="height:150px"></div>');	
 				}
 
 			},
