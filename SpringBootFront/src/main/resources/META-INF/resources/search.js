@@ -1,6 +1,5 @@
-/**
- * Created by flyboss on 2018/12/26.
- */
+
+
 $(document).ready(function () {
     if (getCookie("ordianrySearch") != "") {
         $('#query').val(getCookie("ordianrySearch"));
@@ -34,12 +33,14 @@ $(document).ready(function () {
                         Prism.highlightAll();
                     }
                 } else {
-                    $("#answer").append("<p>" + result.error_msg + "</p>");
+//                    $("#answer").append("<p>" + result.error_msg + "</p>");
+                 	 $("#answer").append("<p>" + "Sorry, I don't know" + "</p>");
                 }
                 sethash();
             },
             error: function (result) {
-                $("#answer").append("<p>" + result + "</p>");
+//                $("#answer").append("<p>" + result + "</p>");
+            	 $("#answer").append("<p>" + "Sorry, I don't know" + "</p>");
             }
         });
     }
@@ -70,12 +71,14 @@ $(document).ready(function () {
                         Prism.highlightAll();
                     }
                 } else {
-                    $("#answer").append("<p>" + result.error_msg + "</p>");
+//                    $("#answer").append("<p>" + result.error_msg + "</p>");
+                 	 $("#answer").append("<p>" + "Sorry, I don't know" + "</p>");
                 }
                 
             },
             error: function (result) {
-                $("#answer").append("connection failed");
+//                $("#answer").append("connection failed");
+             	 $("#answer").append("<p>" + "Sorry, I don't know" + "</p>");
             }
         });
     });

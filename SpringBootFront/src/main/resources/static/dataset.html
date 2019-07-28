@@ -75,6 +75,7 @@ Conventions over Knowledge Graphs</span>
 <div style="display: flex;justify-content: flex-front;">
     <div style="margin: 3px">
     You can use SPARQL to query CCBase. If you don't know how to use SPARQL, please click here to <a target="_blank"  href="https://www.w3.org/TR/sparql11-query/">learn more about SPARQL.</a>
+  <br />The total number of triples in CCBase is 4285.
     <br />For example,
        if you want to know all our entities' names, just click the 'Run' button and you will see them.
       
@@ -93,7 +94,7 @@ Conventions over Knowledge Graphs</span>
 							<textarea rows="20" id="sparqlcode" placeholder=""
 								style="width: 100%">
 PREFIX rdf:<http://www.w3.org/2018/mycard-rdf/1.0#>
-SELECT distinct ?s  ?name
+SELECT distinct ?name
 WHERE {
  ?s rdf:Name ?name.
 }
