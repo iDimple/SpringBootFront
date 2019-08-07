@@ -1,26 +1,7 @@
-var address = "http://202.120.40.28:4461";
-var originAddress = "http://202.120.40.28:4462";
-$(document).ready(function () {
-    $("#searchA").attr("href", originAddress + "/ordinary");
-    $("#advanceA").attr("href", originAddress + "/advance");
-    $("#checkCodeA").attr("href", originAddress + "/code");
-});
+//dictionary
 
-function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue;
-}
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i].trim();
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
+
 
 function displayEntity(entity) {
     var entityId = getEntityId();
@@ -100,7 +81,6 @@ function buildD3(id, entityId) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify(question),
-        // contentType:"application/x-www-form-urlencoded",
         success: function (result) {
             if (!$.isEmptyObject(result.data)) {
                 var d3id = getD3Id();

@@ -1,6 +1,4 @@
-/**
- * Created by flyboss on 2019/1/9.
- */
+
 $(document).ready(function () {
     getAdvanceCookie();
     $("#advancesearch").click(function () {

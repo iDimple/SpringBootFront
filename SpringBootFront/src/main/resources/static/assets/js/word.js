@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var baseUrl="http://202.120.40.28:4460/data/query";
+
 	var afterUrl =  window.location.href;
 	var afterEqual = afterUrl.split("?id=")[1];
 	afterEqual="<"+afterEqual+">";

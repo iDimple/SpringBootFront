@@ -1,7 +1,5 @@
-/**
- * Created by flyboss on 2019/1/2.
- */
-var address = "http://202.120.40.28:4461";
+
+
 
 
 

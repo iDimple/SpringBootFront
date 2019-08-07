@@ -1,6 +1,4 @@
-/**
- * Created by flyboss on 2019/1/2.
- */
+
 
 
 $(document).ready(function () {
@@ -39,7 +37,7 @@ $(document).ready(function () {
                 }else{
                     $("#result").append("<p>"+result.error_msg+"</p>>");
                 }
-                sethash();
+               
             },
             error: function (result) {
                 console.log(result);
@@ -47,16 +45,5 @@ $(document).ready(function () {
             }
         });
     });
-    function sethash(height){
-        var iframeH;
-        if(height != null || height != undefined){
-            iframeH = height;
-        }
-        else{
-            iframeH = $(document.body).outerHeight(true);
-        }
-        var message = "参数%" + iframeH + "%" + (new Date().getTime());
-        //向父页面传递参数
-        window.parent.postMessage(message, '*');
-    }
+
 });

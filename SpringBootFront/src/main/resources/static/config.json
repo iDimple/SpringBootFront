@@ -1,0 +1,4 @@
+{
+	"baseURL": "http://202.120.40.28:4461",
+	"SQARQLURL": "http://202.120.40.28:4460/data/query"
+}

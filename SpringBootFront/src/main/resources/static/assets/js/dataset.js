@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var baseUrl="http://202.120.40.28:4460/data/query";
+
   
 	
 	var editor=CodeMirror.fromTextArea(document.getElementById("sparqlcode"),{
