@@ -57,7 +57,7 @@ Conventions over Knowledge Graphs</span>
 
 					<div>
 						<div style="margin: 15px">
-							We can only check a complete Java Class without syntax errors.<br />
+							We can only check a complete Java Class without syntax errors according to <a target="_blank" href="https://google.github.io/styleguide/javaguide.html">Google Java coding conventions</a>.<br />
 							Complete means it must has a class name and a function just like
 							the example below.<br />
 public class Check {<br />
@@ -69,17 +69,14 @@ if(true){<br />
 						</div>
 						<textarea rows="20" id="code" style="width: 100%">
 public class Check {
-    public static void main(String[] args) {
-        if(true){
-            if(true){
-                if(true){
-                    if(true){
-
-                    }
-                }
-            }
-        }
+  /**
+    *Print "Hello World".
+    */
+  public void print() {
+    if (true) { 
+      System.out.println("Hello World"); 
     }
+  }
 }     
     </textarea>
 					</div>

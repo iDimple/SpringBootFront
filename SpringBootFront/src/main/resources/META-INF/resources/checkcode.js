@@ -27,15 +27,17 @@ $(document).ready(function () {
                 if (result.status==="success"){
                     var json = result.data;
                     if (json.length===0){
-                        $("#result").append("<div>Sorry,we can only analyze a complete Java class without syntax errors." 
-                        		+"</div>>");
+//                        $("#result").append("<div>Sorry,we can only analyze a complete Java class without syntax errors." 
+//                        		+"</div>>");
+                    	 $("#result").append("<div>As far as i know, this Java class statisfies to Google Java coding conventions." 
+                         		+"</div>");
                     }else{
                         for (var i=0;i<json.length;i++){
                             $("#result").append("<p>"+json[i]+"</p>");
                         }
                     }
                 }else{
-                    $("#result").append("<p>"+result.error_msg+"</p>>");
+                    $("#result").append("<p>"+result.error_msg+"</p>");
                 }
                
             },
