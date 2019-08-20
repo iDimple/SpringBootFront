@@ -26,6 +26,7 @@ $(document).ready(function () {
 
 
 		var query = $('#chat_input').val();
+		$('#chat_input').val('');
 //		$("#answer").empty();
 		//首先加上问题
 		$("#answer").append('<div class="st-message-wrap ask"><div class="st-message-icon"></div><div class="st-message-r"></div><div class="st-message"><div class="st-outline">'
