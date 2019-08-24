@@ -27,7 +27,7 @@ $(document).ready(function(){
 				for(var i=0;i<json["bindings"].length;i++){
 					var item=json["bindings"][i];
 					var predicate=item["p"]["value"].split("#")[1];
-					console.log(predicate);
+					
 					if("Name"==predicate){
 						$("#entityName").text(item["o"]["value"]);
 					}
@@ -35,7 +35,7 @@ $(document).ready(function(){
 					jsonFormat[predicate]=item["o"]["value"];
 				}
 				jsonFormat["Id"]=afterEqual;
-				console.log(jsonFormat);
+				
 				displayEntity(jsonFormat);
 				Prism.highlightAll();
 			}          

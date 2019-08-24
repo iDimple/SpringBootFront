@@ -10,7 +10,6 @@ $(document).ready(function () {
 //		temp = temp.replace(/\s/g,"&nbsp;");
 		temp = temp.replace(/\'/g,"&#39;");
 		temp = temp.replace(/\"/g,"&quot;");
-		console.log(temp);
 		return temp;
 	}
 	//反转义

@@ -7,10 +7,9 @@ $(document).ready(function () {
 		temp = str.replace(/&/g,"&amp;");
 		temp = temp.replace(/</g,"&lt;");
 		temp = temp.replace(/>/g,"&gt;");
-		temp = temp.replace(/\s/g,"&nbsp;");
+//		temp = temp.replace(/\s/g,"&nbsp;");
 		temp = temp.replace(/\'/g,"&#39;");
-		temp = temp.replace(/\"/g,"&quot;");
-		console.log(temp);
+	
 		return temp;
 	}
 	//反转义
@@ -21,7 +20,7 @@ $(document).ready(function () {
 		temp = str.replace(/&amp;/g,"&");
 		temp = temp.replace(/&lt;/g,"<");
 		temp = temp.replace(/&gt;/g,">");
-		temp = temp.replace(/&nbsp;/g," ");
+//		temp = temp.replace(/&nbsp;/g," ");
 		temp = temp.replace(/&#39;/g,"\'");
 		temp = temp.replace(/&quot;/g,"\"");
 		return temp;  
@@ -31,9 +30,7 @@ $(document).ready(function () {
 	var jsonShow=[];
 	indexOfClick=1;
 	clickAnswer=function(i){
-		console.log(i);
-		console.log(entity_url);
-		console.log(jsonShow);
+	
 		$("#entity"+i).toggle();
 		if($("#entitydetail"+i).attr("src")=="assets/img/fold.png"){
 			$("#entitydetail"+i).attr("src","assets/img/unfold.png");
@@ -93,14 +90,14 @@ $(document).ready(function () {
 							if(i==(dataJson.answer_start)){
 
 								showContext+='<a onclick=clickAnswer('+indexOfClick+') style="color:red;cursor:pointer">';
-								console.log(showContext)
+								
 
 							}
 							showContext+=context[i];
 							if(i==(dataJson.answer_end-1)){
 								showContext+="<img src='assets/img/fold.png' alt='more details' title='more details' id='entitydetail"+indexOfClick+"'></img>";
 								showContext+='</a>';
-								console.log(i)
+								
 
 							}
 						
@@ -112,7 +109,7 @@ $(document).ready(function () {
 						//entity
 
 						for (var i = 0; i < jsonShow.length; ++i) {
-							console.log(i);
+						
 							displayEntity(jsonShow[i]);
 
 //							$("#answer").append("<hr style='border: 1px solid lightgray;'>");
