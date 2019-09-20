@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<title>批量反地址解析+商圈</title>
+	<style type="text/css">
+		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#l-map{height:300px;width:100%;}
+		#r-result{width:100%; font-size:14px;line-height:20px;}
+	</style>
+	<script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="assets/js/xlsx.core.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=m3sPaPglBwNRNCDg0LBKkw7WGFVxwLTX"></script>
+</head>
+<body>
+<input type="file" id="excel-file">
+	<div id="l-map"></div>
+	<div id="r-result">
+		<input type="button" value="批量反地址解析+商圈" onclick="bdGEO(0)" />
+			<input type="button" value="display" onclick="map()" />
+		<div id="result"></div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+var jingduweidulist=[];
+
+	
+	$('#excel-file').change(function(e) {
+        var files = e.target.files;
+        
+       
+        var fileReader = new FileReader();
+        fileReader.onload = function(ev) {
+            try {
+                var data = ev.target.result,
+                    workbook = XLSX.read(data, {
+                        type: 'binary'
+                    }), // 以二进制流方式读取得到整份excel表格对象
+                    persons = []; // 存储获取到的数据
+            } catch (e) {
+                console.log('文件类型不正确');
+                return;
+            }
+
+            // 表格的表格范围，可用于判断表头是否数量是否正确
+            var fromTo = '';
+            // 遍历每张表读取
+            for (var sheet in workbook.Sheets) {
+                if (workbook.Sheets.hasOwnProperty(sheet)) {
+                    fromTo = workbook.Sheets[sheet]['!ref'];
+                    console.log(fromTo);
+                    persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                    // break; // 如果只取第一张表，就取消注释这行
+                }
+            }
+console.log(persons[0]);
+            for(var i=0;i<persons.length;i++){
+            	person=persons[i];
+          //  	console.log(person);
+            	var jingduweidu={};
+            	jingduweidu["jingdu"]=person["经度"];
+            	jingduweidu["weidu"]=person["纬度"];
+            	//console.log(jingduweidu);
+            	jingduweidulist.push(jingduweidu);
+			}
+			console.log(jingduweidulist.length);
+			console.log(jingduweidulist[0]);
+
+	};
+
+				// 以二进制方式打开文件
+				fileReader.readAsBinaryString(files[0]);
+				
+
+			});
+	function map(){
+		//百度地图API功能
+		var map = new BMap.Map("l-map");
+		map.centerAndZoom(new BMap.Point(119.367781,25.99242), 13);
+		map.enableScrollWheelZoom(true);
+		var index = 0;
+		var myGeo = new BMap.Geocoder();
+		var adds = [];
+		console.log("map");
+		console.log(jingduweidulist.length);
+		for(var i=0;i<jingduweidulist.length;i++){
+			jw=jingduweidulist[i];
+			adds.push(new BMap.Point(jw["jingdu"],jw["weidu"]));
+		}
+
+
+		for(var i = 0; i<20; i++){
+			var marker = new BMap.Marker(adds[i]);
+			map.addOverlay(marker);
+			marker.setLabel(new BMap.Label("我是商圈"+(i+1),{offset:new BMap.Size(20,-10)}));
+		}
+		function bdGEO(){	
+			var pt = adds[index];
+			geocodeSearch(pt);
+			index++;
+		}
+		function geocodeSearch(pt){
+			if(index < adds.length-1){
+				setTimeout(window.bdGEO,400);
+			} 
+			myGeo.getLocation(pt, function(rs){
+				var addComp = rs.addressComponents;
+				document.getElementById("result").innerHTML += index + ". " +adds[index-1].lng + "," + adds[index-1].lat + "："  + "商圈(" + rs.business + ")  结构化数据(" + addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber + ")<br/><br/>";
+			});
+		}
+	}
+</script>
