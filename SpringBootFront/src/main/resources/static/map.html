@@ -92,10 +92,10 @@ console.log(persons[0]);
 		}
 
 
-		for(var i = 0; i<20; i++){
+		for(var i = 0; i<adds.length; i++){
 			var marker = new BMap.Marker(adds[i]);
 			map.addOverlay(marker);
-			marker.setLabel(new BMap.Label("ÎÒÊÇÉÌÈ¦"+(i+1),{offset:new BMap.Size(20,-10)}));
+			marker.setLabel(new BMap.Label(""+(i+1),{offset:new BMap.Size(20,-10)}));
 		}
 		function bdGEO(){	
 			var pt = adds[index];
