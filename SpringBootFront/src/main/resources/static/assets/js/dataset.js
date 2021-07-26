@@ -38,6 +38,9 @@ $("#queryResult").hide();
 			contentType : 'application/x-www-form-urlencoded',
 			url:baseUrl,
 			data:	{"query":cmd},
+			beforeSend: function(request) {
+				request.setRequestHeader("Authorization", "Basic dXNlcjpBZG1pbkBzZTE0MDU=");
+			},
 			success : function(resdata) {
 				$("#imgYX").attr("src","assets/img/yunxing.png");
 				$("#queryResult").show();
