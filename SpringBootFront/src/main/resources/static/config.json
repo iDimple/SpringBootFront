@@ -1,4 +1,4 @@
 {
-	"baseURL": "http://202.120.40.28:4461",
-	"SQARQLURL": "http://202.120.40.28:4460/data/query"
+	"baseURL": "https://cocoqa.sjtu.edu.cn/api1",
+	"SQARQLURL": "https://cocoqa.sjtu.edu.cn/api2"
 }
